@@ -255,25 +255,40 @@
             color: var(--text-soft); margin-bottom: 22px; letter-spacing: 0.3px;
         }
 
+        /* ★ 완전히 수정한 티켓 입력창 행 레이아웃 */
         .ticket-input-row {
-            display: flex; 
-            flex-direction: column; /* ★ 기본적으로 입력창과 버튼을 세로로 배치 */
-            gap: 10px; 
+            display: flex;
+            flex-direction: column; /* 1. 무조건 세로로 먼저 쌓이도록 기본값 지정 */
+            gap: 10px;
             align-items: stretch;
-        }
-
-        /* 스마트폰 화면(폭이 좁은 모바일)에서는 버튼이 꽉 차게 아래로 내려가도록 유도 */
-        .ticket-issue-btn {
             width: 100%;
         }
 
-        /* 디스플레이 화면 가로 폭이 360px 이상으로 여유가 생기면 다시 원래대로 가로 정렬 */
-        @media (min-width: 360px) {
+        /* 2. 입력창 너비를 부모 크기에 맞게 100% 가득 채우기 */
+        .ticket-name {
+            width: 100%;
+            flex: none; /* 부모 크기에 유연하게 반응하지 않고 꽉 차게 고정 */
+        }
+
+        /* 3. 버튼에 걸려있던 줄바꿈 금지를 해제하고 100% 너비로 아래에 안착 */
+        .ticket-issue-btn {
+            width: 100%;
+            white-space: normal; /* 글자가 잘리지 않고 영역 안으로 들어오도록 설정 */
+            padding: 14px 22px;
+        }
+
+        /* 4. 화면이 다소 여유 있는 기기(가로폭 400px 이상)일 때만 세련되게 가로로 나란히 정렬 */
+        @media (min-width: 400px) {
             .ticket-input-row {
-                flex-direction: row; /* 다시 가로로 나란히 배치 */
+                flex-direction: row; /* 가로 나란히 정렬 */
+            }
+            .ticket-name {
+                flex: 1; /* 입력창이 남은 공간을 다 차지 */
+                width: auto;
             }
             .ticket-issue-btn {
-                width: auto; /* 버튼 크기를 글자 크기에 맞춤 */
+                width: auto; /* 버튼은 글자 크기만큼만 알맞게 */
+                white-space: nowrap; /* 큰 화면에선 줄바꿈 방지 */
             }
         }
 
@@ -708,7 +723,7 @@
                 <span class="benefit-tag">EXCLUSIVE BENEFITS</span>
                 <h3 class="benefit-title"> 🥂 VIP 한정 특별 키트 증정 안내 🥂</h3>
                 <p class="benefit-desc">
-                    쇼케이스에 참석해주신 모든 VIP 참석자 분들께는<br>
+                    쇼케이스에 참석해주신 VIP 참석자 분들께는<br>
                     <span class="benefit-highlight">제니트리 리뉴필 스페셜 키트</span>와 <br>
                     현장 구매 시 사용 가능한 <br>
                     <span class="benefit-highlight">특별 바우처</span>를 증정합니다. 🎁🥂
