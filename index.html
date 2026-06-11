@@ -256,7 +256,25 @@
         }
 
         .ticket-input-row {
-            display: flex; gap: 10px; align-items: stretch;
+            display: flex; 
+            flex-direction: column; /* ★ 기본적으로 입력창과 버튼을 세로로 배치 */
+            gap: 10px; 
+            align-items: stretch;
+        }
+
+        /* 스마트폰 화면(폭이 좁은 모바일)에서는 버튼이 꽉 차게 아래로 내려가도록 유도 */
+        .ticket-issue-btn {
+            width: 100%;
+        }
+
+        /* 디스플레이 화면 가로 폭이 360px 이상으로 여유가 생기면 다시 원래대로 가로 정렬 */
+        @media (min-width: 360px) {
+            .ticket-input-row {
+                flex-direction: row; /* 다시 가로로 나란히 배치 */
+            }
+            .ticket-issue-btn {
+                width: auto; /* 버튼 크기를 글자 크기에 맞춤 */
+            }
         }
 
         .ticket-name {
@@ -688,9 +706,9 @@
             </div>
             <div class="benefit-card appear d2">
                 <span class="benefit-tag">EXCLUSIVE BENEFITS</span>
-                <h3 class="benefit-title"> 🥂 VIP 참석자 한정 특별 키트 증정 안내 🥂</h3>
+                <h3 class="benefit-title"> 🥂 VIP 한정 특별 키트 증정 안내 🥂</h3>
                 <p class="benefit-desc">
-                    쇼케이스에 참석해주신 모든 VIP 분들께는<br>
+                    쇼케이스에 참석해주신 모든 VIP 참석자 분들께는<br>
                     <span class="benefit-highlight">제니트리 리뉴필 스페셜 키트</span>와 <br>
                     현장 구매 시 사용 가능한 <br>
                     <span class="benefit-highlight">특별 바우처</span>를 증정합니다. 🎁🥂
