@@ -40,9 +40,6 @@
             overflow-x: hidden;
         }
 
-        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-         * 2. 파티클 캔버스 (초대장 위로 올리기)
-         * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         #sparks {
             position: fixed;
             inset: 0;
@@ -50,9 +47,6 @@
             z-index: 99999;        
         }
 
-        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-         * 3. 상단 고정 네비게이션 
-         * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         .glass-nav {
             position: sticky; top:0; left:0;
             width: 100%; height: 60px;
@@ -71,9 +65,6 @@
         .nav-icon:hover { color: var(--rose); text-shadow: 0 0 12px rgba(229,169,158,0.7); transform: translateY(-2px); }
         .nav-icon.on { color: var(--rose); text-shadow: 0 0 8px rgba(229,169,158,0.5); }
 
-        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-         * 4. 메인 카드 컨테이너
-         * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         #card {
             position: relative; z-index: 1;
             margin: 44px auto;
@@ -84,9 +75,6 @@
             overflow: hidden;
         }
 
-        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-         * 5. 공통 섹션 구분 장치
-         * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         .sec-num {
             font-family: 'Cormorant Garamond', serif;
             font-size: 12px;
@@ -131,9 +119,6 @@
         .d3 { transition-delay: 0.36s; }
         .d4 { transition-delay: 0.48s; }
 
-        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-         * 6. [01. HERO] 섹션
-         * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         .sec-hero {
             padding: 72px 36px 0;
             text-align: center;
@@ -148,9 +133,6 @@
             color: var(--purple);
         }
 
-        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-         * 7. [갤러리] 4:5 비율 크로스 페이드 스와이프
-         * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         .gallery-shell {
             position: relative; width: 100%;
             padding-top: 125%;   
@@ -187,9 +169,6 @@
         }
         .gdot.on { background: var(--rose); transform: scale(1.4); box-shadow: 0 0 10px rgba(229,169,158,0.8); }
 
-        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-         * 8. [02. INVITATION] 섹션
-         * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         .sec-invite {
             padding: 150px 44px;
             text-align: center;
@@ -210,9 +189,6 @@
 
         .rose-em { color: var(--rose); font-weight: 600; }
 
-        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-         * 9. [03. COUNTDOWN & TICKET] 섹션 
-         * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         .sec-ticket {
             padding: 100px 36px;
             background: var(--beige);
@@ -255,45 +231,18 @@
             color: var(--text-soft); margin-bottom: 22px; letter-spacing: 0.3px;
         }
 
-        /* ★ 완전히 수정한 티켓 입력창 행 레이아웃 */
         .ticket-input-row {
             display: flex;
-            flex-direction: column; /* 1. 무조건 세로로 먼저 쌓이도록 기본값 지정 */
+            flex-direction: column;
             gap: 10px;
             align-items: stretch;
             width: 100%;
         }
 
-        /* 2. 입력창 너비를 부모 크기에 맞게 100% 가득 채우기 */
         .ticket-name {
             width: 100%;
-            flex: none; /* 부모 크기에 유연하게 반응하지 않고 꽉 차게 고정 */
-        }
-
-        /* 3. 버튼에 걸려있던 줄바꿈 금지를 해제하고 100% 너비로 아래에 안착 */
-        .ticket-issue-btn {
-            width: 100%;
-            white-space: normal; /* 글자가 잘리지 않고 영역 안으로 들어오도록 설정 */
-            padding: 14px 22px;
-        }
-
-        /* 4. 화면이 다소 여유 있는 기기(가로폭 400px 이상)일 때만 세련되게 가로로 나란히 정렬 */
-        @media (min-width: 400px) {
-            .ticket-input-row {
-                flex-direction: row; /* 가로 나란히 정렬 */
-            }
-            .ticket-name {
-                flex: 1; /* 입력창이 남은 공간을 다 차지 */
-                width: auto;
-            }
-            .ticket-issue-btn {
-                width: auto; /* 버튼은 글자 크기만큼만 알맞게 */
-                white-space: nowrap; /* 큰 화면에선 줄바꿈 방지 */
-            }
-        }
-
-        .ticket-name {
-            flex: 1; padding: 14px 18px;
+            flex: none;
+            padding: 14px 18px;
             border: 1px solid var(--rose); background: var(--white);
             font-family: 'Pretendard', sans-serif; font-size: 14px; color: var(--purple);
             outline: none; letter-spacing: 0.5px;
@@ -303,15 +252,22 @@
         .ticket-name::placeholder { color: #CCC; }
 
         .ticket-issue-btn {
+            width: 100%;
+            white-space: normal;
             padding: 14px 22px;
             background: var(--purple); color: var(--rose);
             border: none; cursor: pointer;
             font-family: 'Cormorant Garamond', serif;
             font-size: 14px; letter-spacing: 2px; font-weight: 400;
-            white-space: nowrap;
             transition: all 0.3s ease;
         }
         .ticket-issue-btn:hover { background: #1e1020; box-shadow: 0 4px 20px rgba(44,26,48,0.3); }
+
+        @media (min-width: 400px) {
+            .ticket-input-row { flex-direction: row; }
+            .ticket-name { flex: 1; width: auto; }
+            .ticket-issue-btn { width: auto; white-space: nowrap; }
+        }
 
         .vip-ticket {
             display: none;  
@@ -411,9 +367,6 @@
         .ticket-reset { margin-top: 20px; font-size: 12px; color: var(--text-soft); cursor: pointer; letter-spacing: 0.5px; text-decoration: underline; }
         .ticket-reset:hover { color: var(--rose); }
 
-        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-         * 10. [03-2. SPECIAL BENEFIT] 섹션 
-         * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         .sec-benefit {
             padding: 100px 36px;
             background: var(--white);
@@ -443,9 +396,6 @@
         .benefit-desc { font-size: 13.5px; font-weight: 300; line-height: 2.1; color: var(--text); word-break: keep-all; }
         .benefit-highlight { color: var(--purple); font-weight: 600; border-bottom: 1px solid var(--rose); }
 
-        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-         * 11. [04. INFORMATION] 섹션
-         * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         .sec-info {
             padding: 100px 44px;
             background: var(--beige);
@@ -456,7 +406,7 @@
             display: grid;
             grid-template-columns: 90px 1fr; 
             column-gap: 18px; row-gap: 0;
-            margin-bottom: 48px; /* 그리드 하단과 마진 확보 */
+            margin-bottom: 48px;
         }
 
         .ig-row { display: contents; }
@@ -495,7 +445,6 @@
         .ig-row:last-child .ig-val { padding-bottom: 0; }
         .ig-row:last-child .ig-val::after { display: none; }
 
-        /* RSVP 버튼 스타일 정상화 */
         .rsvp-wrap { width: 100%; margin-top: 12px; }
         .rsvp-btn {
             display: block; width: 100%;
@@ -515,7 +464,6 @@
         .rsvp-btn:hover { color: var(--white); border-color: var(--purple); transform: scale(1.025); box-shadow: 0 10px 28px rgba(44,26,48,0.2); }
         .rsvp-btn:hover::before { transform: scaleX(1); }
 
-        /* 제품 알아보기 버튼 스타일 정상화 */
         .detail-wrap { width: 100%; margin-top: 16px; }
         .detail-btn {
             display: block; width: 100%;
@@ -531,7 +479,6 @@
             transform: translateY(-1px);
         }
 
-        /* 공유하기 버튼 프리미엄 스타일 정상화 */
         .share-wrap { width: 100%; margin-top: 16px; }
         .share-btn {
             display: block; width: 100%;
@@ -548,7 +495,6 @@
             transform: translateY(-1px);
         }
 
-        /* 문의하기 퀵 아이콘 버튼 그룹 스타일 */
         .inquiry-btn-group {
             display: flex; gap: 10px; margin-top: 12px; width: 100%;
         }
@@ -563,7 +509,6 @@
             box-shadow: 0 4px 12px rgba(44,26,48,0.05);
         }
 
-        /* 오시는 길 타이틀 및 레이아웃 시스템 정상화 */
         .map-box { margin-top: 60px; width: 100%; }
         .map-lbl { 
             font-family: 'Cormorant Garamond', serif; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; 
@@ -575,9 +520,6 @@
             text-shadow: 0 0 8px rgba(255, 255, 255, 0.9), 0 0 4px rgba(255, 255, 255, 0.5);
         }
 
-        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-         * 12. 푸터 및 반응형
-         * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         .card-footer { padding: 36px 44px; text-align: center; border-top: 1px solid var(--line); }
         .footer-txt { font-family: 'Cormorant Garamond', serif; font-size: 12px; letter-spacing: 3px; color: #C4BFBC; }
 
@@ -588,13 +530,14 @@
             .sec-invite, .sec-info { padding-left: 28px; padding-right: 28px; }
         }
     </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
 
-    <!-- 파티클 캔버스 -->
     <canvas id="sparks"></canvas>
 
-    <!-- 상단 고정 네비게이션 -->
     <nav class="glass-nav">
         <button class="nav-icon on" title="모바일 뷰 (430px)" onclick="setView('mobile', this)">
             <i class="fas fa-mobile-alt"></i>
@@ -607,10 +550,8 @@
         </button>
     </nav>
 
-    <!-- 메인 시트 컨테이너 -->
     <main id="card">
 
-        <!-- 01. HERO 섹션 -->
         <section class="sec-hero">
             <span class="sec-num appear">01. JANYTREE</span>
             <img src="./Picture/제니트리로고.png" alt="제니트리 브랜드 로고" class="brand-logo appear d1" onerror="this.style.display='none';">
@@ -618,7 +559,6 @@
             <div class="rose-line appear d3"></div>
         </section>
 
-        <!-- 크로스 페이드 갤러리 모듈 -->
         <div class="gallery-shell appear d4" id="gallery">
             <div class="g-frame on" data-i="0">
                 <img src="./Picture/리뉴필17.jpg" alt="리뉴필 제품 1" onerror="this.parentElement.style.background='#EAE8E4';">
@@ -640,7 +580,6 @@
             </div>
         </div>
 
-        <!-- 02. INVITATION 섹션 -->
         <section class="sec-invite">
             <span class="sec-num appear">02. INVITATION</span>
             <span class="capsule appear d1">✉️ &nbsp; WELCOME</span>
@@ -658,7 +597,6 @@
             </p>
         </section>
 
-        <!-- 03. COUNTDOWN & TICKET 섹션 -->
         <section class="sec-ticket">
             <span class="sec-num appear">03. COUNTDOWN &amp; TICKET</span>
             <div style="text-align:center;">
@@ -688,9 +626,19 @@
             </div>
 
             <div class="ticket-form-wrap appear d3" id="ticketForm">
-                <p class="ticket-caption">성함을 입력하시면 VIP 디지털 티켓이 발급됩니다.</p>
+                <p class="ticket-caption">성함과 참석 여부를 입력하시면 VIP 디지털 티켓이 발급됩니다.</p>
+                
+                <div style="display: flex; justify-content: center; gap: 24px; margin-bottom: 20px;">
+                    <label style="cursor: pointer; font-size: 14px; color: var(--purple); font-weight: 500;">
+                        <input type="radio" name="attendRadio" value="참석" checked style="accent-color: var(--purple); margin-right: 6px;"> ✨ 참석
+                    </label>
+                    <label style="cursor: pointer; font-size: 14px; color: var(--text-soft);">
+                        <input type="radio" name="attendRadio" value="불참" style="accent-color: var(--purple); margin-right: 6px;"> 다음 기회에
+                    </label>
+                </div>
+
                 <div class="ticket-input-row">
-                    <input type="text" class="ticket-name" id="nameInput" placeholder="이름을 입력해 주세요" maxlength="10" onkeydown="if(event.key==='Enter') issueTicket();">
+                    <input type="text" class="ticket-name" id="nameInput" placeholder="이름을 입력해 주세요" maxlength="10">
                     <button class="ticket-issue-btn" onclick="issueTicket()">발급하기</button>
                 </div>
             </div>
@@ -699,6 +647,7 @@
                 <p class="ticket-top-label">✦ Exclusive VIP Pass ✦</p>
                 <div class="ticket-vip-badge">V I P</div>
                 <p class="ticket-name-display" id="ticketNameDisplay">홍길동</p>
+                <p id="ticketAttendDisplay" style="font-size: 11px; color: var(--rose); font-weight: 500; letter-spacing: 1px; margin-top: -4px; margin-bottom: 12px;"></p>
                 <p class="ticket-name-label">Guest Name</p>
                 <div class="ticket-divider"><span>✦</span></div>
                 <div class="qr-wrap"><div class="qr-box"><div class="qr-inner"></div></div></div>
@@ -709,11 +658,14 @@
                 <div class="ticket-divider"><span>✦</span></div>
                 <p class="ticket-event">클리닉스 라뉴필 쇼케이스</p>
                 <p class="ticket-date">2026. 07. 01 (수) 17:00</p>
+
+                <button onclick="downloadComponent('vipTicket', 'LAHNUPEEL_VIP_TICKET')" style="width: 100%; margin-top: 24px; padding: 13px 0; background: transparent; color: var(--purple); border: 1px solid var(--purple); font-size: 12px; cursor: pointer; letter-spacing: 1.5px; font-weight: 500; font-family: 'Pretendard', sans-serif; margin-bottom: 10px;">
+                    <i class="fas fa-download" style="margin-right: 6px;"></i> 티켓 이미지 저장하기
+                </button>
                 <p class="ticket-reset" onclick="resetTicket()">↩ 이름 다시 입력</p>
             </div>
         </section>
 
-        <!-- 03-2. SPECIAL BENEFIT 섹션 -->
         <section class="sec-benefit">
             <span class="sec-num appear">03-2. SPECIAL BENEFIT</span>
             <div style="text-align:center; margin-bottom:24px;">
@@ -722,23 +674,43 @@
             <div class="benefit-card appear d2">
                 <span class="benefit-tag">EXCLUSIVE BENEFITS</span>
                 <h3 class="benefit-title"> 🥂 VIP 한정 특별 키트 증정 안내 🥂</h3>
-                <p class="benefit-desc">
+                <p class="benefit-desc" style="margin-bottom: 28px;">
                     쇼케이스에 참석해주신 VIP 참석자 분들께는<br>
                     <span class="benefit-highlight">제니트리 리뉴필 스페셜 키트</span>와 <br>
                     현장 구매 시 사용 가능한 <br>
                     <span class="benefit-highlight">특별 바우처</span>를 증정합니다. 🎁
                 </p>
+
+                <div id="giftForm" style="border-top: 1px dashed rgba(44,26,48,0.15); padding-top: 24px; text-align: left;">
+                    <p style="font-size: 13px; color: var(--purple); font-weight: 500; margin-bottom: 12px; text-align: center; letter-spacing: 0.5px;">✦ 특별 키트 교환권 신청하기 ✦</p>
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                        <input type="text" id="giftAffiliation" placeholder="소속을 입력하세요 (예: 제니트리 의원)" style="width: 100%; padding: 13px; border: 1px solid var(--rose); font-size: 13px; outline: none; background: var(--white); font-family: inherit;">
+                        <input type="text" id="giftName" placeholder="성함을 입력하세요" style="width: 100%; padding: 13px; border: 1px solid var(--rose); font-size: 13px; outline: none; background: var(--white); font-family: inherit;">
+                        <button onclick="issueGiftTicket()" style="width: 100%; padding: 14px; background: var(--purple); color: var(--rose); border: none; font-size: 13px; letter-spacing: 1px; cursor: pointer; font-weight: 500; font-family: inherit;">확인 및 교환권 발급</button>
+                    </div>
+                </div>
+
+                <div id="giftVoucher" style="display: none; border: 1px solid var(--purple); background: var(--white); padding: 28px 24px; margin-top: 20px; text-align: center; position: relative; animation: ticketReveal 0.6s cubic-bezier(0.22,1,0.36,1);">
+                    <p style="font-family: 'Cormorant Garamond', serif; font-size: 11px; letter-spacing: 4px; color: var(--rose); margin-bottom: 4px;">VIP EXCLUSIVE GIFT</p>
+                    <h4 style="font-size: 17px; color: var(--purple); font-weight: 600; margin-bottom: 16px; letter-spacing: 0.5px;">스페셜 키트 교환권</h4>
+                    <div style="border-top: 1px dashed var(--rose); border-bottom: 1px dashed var(--rose); padding: 14px 0; margin-bottom: 16px;">
+                        <p style="font-size: 14px; color: var(--purple); font-weight: 600; letter-spacing: 0.3px;" id="voucherUserDisplay">제니트리 의원 / 홍길동 VIP님</p>
+                    </div>
+                    <p style="font-size: 11.5px; color: var(--text-soft); margin-bottom: 20px;">본 교환권을 현장 인포메이션에 제시해 주세요.</p>
+                    
+                    <button onclick="downloadComponent('giftVoucher', 'LAHNUPEEL_GIFT_VOUCHER')" style="width: 100%; padding: 13px 0; background: var(--purple); color: var(--rose); border: none; font-size: 12px; cursor: pointer; letter-spacing: 1.5px; font-weight: 500; font-family: 'Pretendard', sans-serif;">
+                        <i class="fas fa-download" style="margin-right: 6px;"></i> 교환권 이미지 저장하기
+                    </button>
+                </div>
             </div>
         </section>
 
-        <!-- 04. INFORMATION 섹션 -->
         <section class="sec-info">
             <span class="sec-num appear">04. INFORMATION</span>
             <div style="text-align:center; margin-bottom:48px;">
                 <span class="capsule appear d1">🏛️ &nbsp; EVENT INFO</span>
             </div>
 
-            <!-- 디스플레이 격자 시스템 플레이트 -->
             <div class="info-grid">
                 <div class="ig-row">
                     <span class="ig-key appear d1"><i class="fas fa-calendar-alt" style="font-size:10px;margin-right:5px;"></i>Date</span>
@@ -762,7 +734,7 @@
                         <span class="sub">서울 금천구 가산디지털2로 67, 1403호</span>
                     </div>
                 </div>
-                <!-- ★ [태그 닫기 수정 완료] 닫는 div를 정확하게 지정하여 뒤쪽 버튼들의 구조 독립을 보완했습니다 -->
+                
                 <div class="ig-row">
                     <span class="ig-key appear d4"><i class="fas fa-comment-dots" style="font-size:10px;margin-right:5px;"></i>Inquiry</span>
                     <div class="ig-val appear d4">
@@ -775,38 +747,32 @@
                         </div>
                     </div>
                 </div>
-            </div> <!-- info-grid 마감 마커 -->
-
-            <!-- 럭셔리 하단 버튼 시퀀스 컴포넌트 (정상 상태 원복 완료) -->
-            <!-- 예약하기 버튼 -->
+            </div>
+            
             <div class="rsvp-wrap appear d4">
                 <a href="#" class="rsvp-btn" onclick="alert('예약 페이지로 이동합니다.'); return false;">
                     🥂 &nbsp; 쇼케이스 참석 예약하기
                 </a>
             </div>
 
-            <!-- 제품 알아보기 버튼 -->
             <div class="detail-wrap appear d4">
                 <a href="https://intomedipro.com/shop_view/?idx=170" target="_blank" rel="noopener noreferrer" class="detail-btn">
                     <i class="fas fa-search" style="margin-right: 6px; font-size: 11px;"></i> 클리닉스 라뉴필 제품 알아보기
                 </a>
             </div>
 
-            <!-- 공유하기 버튼 -->
             <div class="share-wrap appear d4">
                 <button class="share-btn" onclick="shareInvitation()">
                     <i class="fas fa-share-alt" style="margin-right: 8px; font-size: 12px;"></i> 초대장 공유하기 &amp; 링크 복사
                 </button>
             </div>
 
-            <!-- 오시는 길 약도 레이아웃 컴포넌트 -->
             <div class="map-box appear d4">
                 <p class="map-lbl">오시는 길</p>
                 <img src="./Picture/약도.png" alt="제니트리 쇼룸 약도" class="map-img" onerror="this.style.display='none';">
             </div>
         </section>
 
-        <!-- 푸터 시그니처 캡션 -->
         <footer class="card-footer">
             <p class="footer-txt">CLINIX LAHNUPEEL &nbsp;·&nbsp; 2026 &nbsp;·&nbsp; ✨</p>
         </footer>
@@ -816,6 +782,113 @@
     <script>
         "use strict";
 
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        // Supabase 원격 인증 모듈 연동 고정 단일화
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        const SUPABASE_URL = "https://jczwmpbvttwennzfvsae.supabase.co"; 
+        const SUPABASE_KEY = "sb_publishable_uOH2O9XfGf9Hvv6GAdNaEQ_HpSrrcgW"; 
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        async function issueTicket() {
+            const name = document.getElementById('nameInput').value.trim();
+            const attendance = document.querySelector('input[name="attendRadio"]:checked').value;
+
+            if (!name) {
+                document.getElementById('nameInput').style.borderColor = '#ff9999';
+                document.getElementById('nameInput').placeholder = '이름을 입력해 주세요 ✦';
+                return;
+            }
+
+            try {
+                const { error } = await supabase
+                    .from('tickets')
+                    .insert([{ name: name, attendance: attendance }]);
+
+                if (error) throw error;
+
+                document.getElementById('ticketNameDisplay').textContent = name + ' 님';
+                document.getElementById('ticketAttendDisplay').textContent = `[쇼케이스 ${attendance} 확정 게스트]`;
+                document.getElementById('ticketCode').textContent = 'VIP-' + Math.random().toString(36).substring(2,6).toUpperCase() + '-2026';
+
+                const barcodeContainer = document.getElementById('barcodeLines');
+                barcodeContainer.innerHTML = '';
+                const widths = [1,2,1,3,1,2,1,1,3,2,1,1,2,1,2,3,1,1,2,1,1,3,1,2,1];
+                widths.forEach(w => {
+                    const bar = document.createElement('span');
+                    bar.style.width = (w * 2) + 'px';
+                    bar.style.opacity = (0.4 + Math.random() * 0.5);
+                    barcodeContainer.appendChild(bar);
+                });
+
+                document.getElementById('ticketForm').style.display = 'none';
+                const ticket = document.getElementById('vipTicket');
+                ticket.style.display = 'block';
+                ticket.classList.add('show');
+                setTimeout(() => ticket.scrollIntoView({ behavior:'smooth', block:'center' }), 100);
+
+            } catch (err) {
+                console.error("데이터 저장 실패:", err);
+                alert("네트워크 서버 통신 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.");
+            }
+        }
+
+        async function issueGiftTicket() {
+            const affiliation = document.getElementById('giftAffiliation').value.trim();
+            const name = document.getElementById('giftName').value.trim();
+
+            if (!affiliation || !name) {
+                alert("소속과 성함을 모두 명확히 입력해 주세요.");
+                return;
+            }
+
+            try {
+                const { error } = await supabase
+                    .from('gifts')
+                    .insert([{ name: name, affiliation: affiliation }]);
+
+                if (error) throw error;
+
+                document.getElementById('voucherUserDisplay').textContent = `${affiliation} / ${name} VIP님`;
+                document.getElementById('giftForm').style.display = 'none';
+                
+                const voucher = document.getElementById('giftVoucher');
+                voucher.style.display = 'block';
+                setTimeout(() => voucher.scrollIntoView({ behavior:'smooth', block:'center' }), 100);
+
+            } catch (err) {
+                console.error("키트 신청 저장 실패:", err);
+                alert("신청 처리 중 데이터베이스 에러가 발생했습니다.");
+            }
+        }
+
+        function downloadComponent(elementId, fileName) {
+            const target = document.getElementById(elementId);
+            if (!target) return;
+
+            const buttons = target.querySelectorAll('button, .ticket-reset');
+            buttons.forEach(btn => btn.style.opacity = '0');
+
+            html2canvas(target, {
+                scale: 3, 
+                backgroundColor: '#FDF9F6', 
+                useCORS: true,
+                logging: false
+            }).then(canvas => {
+                buttons.forEach(btn => btn.style.opacity = '1');
+
+                const link = document.createElement('a');
+                link.download = `${fileName}_${new Date().toISOString().slice(0,10)}.png`;
+                link.href = canvas.toDataURL('image/png');
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }).catch(err => {
+                buttons.forEach(btn => btn.style.opacity = '1');
+                console.error('이미지 크롭 에러:', err);
+                alert('이미지 파일 변환 중 오류가 발생했습니다. 브라우저 화면을 직접 캡처해 주셔도 현장 사용이 가능합니다.');
+            });
+        }
+
         function setView(type, btn) {
             const sizes = { mobile:'430px', tablet:'768px', pc:'1200px' };
             document.getElementById('card').style.maxWidth = sizes[type] || '430px';
@@ -824,7 +897,7 @@
         }
 
         const frames = document.querySelectorAll('.g-frame');
-        const gdots  = document.querySelectorAll('.gdot');
+        const gdots = document.querySelectorAll('.gdot');
         let cur = 0;
         const total = frames.length;
 
@@ -869,37 +942,6 @@
             $id('cs').textContent = pad(Math.floor((diff % 60000) / 1000));
         }
         tick(); setInterval(tick, 1000);
-
-        function issueTicket() {
-            const name = document.getElementById('nameInput').value.trim();
-            if (!name) {
-                document.getElementById('nameInput').style.borderColor = '#ff9999';
-                document.getElementById('nameInput').placeholder = '이름을 입력해 주세요 ✦';
-                setTimeout(() => document.getElementById('nameInput').style.borderColor = '', 1500);
-                return;
-            }
-
-            document.getElementById('ticketNameDisplay').textContent = name + ' 님';
-            const code = 'VIP-' + Math.random().toString(36).substring(2,6).toUpperCase() + '-2026';
-            document.getElementById('ticketCode').textContent = code;
-
-            const barcodeContainer = document.getElementById('barcodeLines');
-            barcodeContainer.innerHTML = '';
-            const widths = [1,2,1,3,1,2,1,1,3,2,1,1,2,1,2,3,1,1,2,1,1,3,1,2,1];
-            widths.forEach(w => {
-                const bar = document.createElement('span');
-                bar.style.width = (w * 2) + 'px';
-                bar.style.opacity = (0.4 + Math.random() * 0.5);
-                barcodeContainer.appendChild(bar);
-            });
-
-            document.getElementById('ticketForm').style.display = 'none';
-            const ticket = document.getElementById('vipTicket');
-            ticket.style.display = 'block';
-            ticket.classList.add('show');
-
-            setTimeout(() => ticket.scrollIntoView({ behavior:'smooth', block:'center' }), 100);
-        }
 
         function resetTicket() {
             document.getElementById('vipTicket').style.display = 'none';
