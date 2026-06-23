@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,27 +10,43 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
 
     <style>
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
          * 1. CSS 변수 & 기반 시스템
          * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         :root {
-            --white:      #FFFFFF;
-            --rose:       #E5A99E;        /* 로즈 골드 */
-            --rose-faint: rgba(229,169,158,0.12);
-            --purple:     #2C1A30;        /* 미드나잇 벨벳 퍼플 */
-            --beige:      #FDF9F6;        /* 실크 베이지 서브 플레이트 */
-            --text:       #3D3D3D;
-            --text-soft:  #888888;
-            --line:       #F0EDE8;        /* 가느다란 구분선 */
-            --aura:       0 20px 70px rgba(229,169,158,0.18);
+            --white: #FFFFFF;
+            --rose: #E5A99E;
+            /* 로즈 골드 */
+            --rose-faint: rgba(229, 169, 158, 0.12);
+            --purple: #2C1A30;
+            /* 미드나잇 벨벳 퍼플 */
+            --beige: #FDF9F6;
+            /* 실크 베이지 서브 플레이트 */
+            --text: #3D3D3D;
+            --text-soft: #888888;
+            --line: #F0EDE8;
+            /* 가느다란 구분선 */
+            --aura: 0 20px 70px rgba(229, 169, 158, 0.18);
         }
 
-        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-        html { scroll-behavior: smooth; }
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
             background: var(--white);
@@ -43,30 +60,50 @@
         #sparks {
             position: fixed;
             inset: 0;
-            pointer-events: none; 
-            z-index: 99999;        
+            pointer-events: none;
+            z-index: 99999;
         }
 
         .glass-nav {
-            position: sticky; top:0; left:0;
-            width: 100%; height: 60px;
-            z-index: 100000; 
-            display: flex; justify-content: center; align-items: center; gap: 44px;
-            background: rgba(255,255,255,0.88);
-            backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            z-index: 100000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 44px;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
             border-bottom: 1px solid var(--rose);
         }
 
         .nav-icon {
-            background: none; border: none;
-            font-size: 19px; color: #CCC; cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 19px;
+            color: #CCC;
+            cursor: pointer;
             transition: all 0.3s ease;
         }
-        .nav-icon:hover { color: var(--rose); text-shadow: 0 0 12px rgba(229,169,158,0.7); transform: translateY(-2px); }
-        .nav-icon.on { color: var(--rose); text-shadow: 0 0 8px rgba(229,169,158,0.5); }
+
+        .nav-icon:hover {
+            color: var(--rose);
+            text-shadow: 0 0 12px rgba(229, 169, 158, 0.7);
+            transform: translateY(-2px);
+        }
+
+        .nav-icon.on {
+            color: var(--rose);
+            text-shadow: 0 0 8px rgba(229, 169, 158, 0.5);
+        }
 
         #card {
-            position: relative; z-index: 1;
+            position: relative;
+            z-index: 1;
             margin: 44px auto;
             max-width: 430px;
             background: var(--white);
@@ -93,16 +130,18 @@
             border: 1px solid var(--rose);
             border-radius: 100px;
             font-family: 'Cormorant Garamond', serif;
-            font-size: 11px; font-weight: 500;
+            font-size: 11px;
+            font-weight: 500;
             letter-spacing: 2px;
             text-transform: uppercase;
             color: var(--purple);
-            background: rgba(229,169,158,0.05);
+            background: rgba(229, 169, 158, 0.05);
             margin-bottom: 24px;
         }
 
         .rose-line {
-            width: 44px; height: 1px;
+            width: 44px;
+            height: 1px;
             background: var(--rose);
             margin: 0 auto 40px;
         }
@@ -110,64 +149,111 @@
         .appear {
             opacity: 0;
             transform: translateY(36px);
-            transition: opacity 0.95s cubic-bezier(0.22,1,0.36,1),
-                        transform 0.95s cubic-bezier(0.22,1,0.36,1);
+            transition: opacity 0.95s cubic-bezier(0.22, 1, 0.36, 1), transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
         }
-        .appear.show { opacity:1; transform: translateY(0); }
-        .d1 { transition-delay: 0.12s; }
-        .d2 { transition-delay: 0.24s; }
-        .d3 { transition-delay: 0.36s; }
-        .d4 { transition-delay: 0.48s; }
+
+        .appear.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .d1 {
+            transition-delay: 0.12s;
+        }
+
+        .d2 {
+            transition-delay: 0.24s;
+        }
+
+        .d3 {
+            transition-delay: 0.36s;
+        }
+
+        .d4 {
+            transition-delay: 0.48s;
+        }
 
         .sec-hero {
             padding: 72px 36px 0;
             text-align: center;
         }
 
-        .brand-logo { width: 148px; height: auto; display: block; margin: 0 auto 52px; }
+        .brand-logo {
+            width: 148px;
+            height: auto;
+            display: block;
+            margin: 0 auto 52px;
+        }
 
         .hero-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 44px; font-weight: 400; font-style: italic;
-            line-height: 1.15; letter-spacing: 1.5px;
+            font-size: 44px;
+            font-weight: 400;
+            font-style: italic;
+            line-height: 1.15;
+            letter-spacing: 1.5px;
             color: var(--purple);
         }
 
         .gallery-shell {
-            position: relative; width: 100%;
-            padding-top: 125%;   
+            position: relative;
+            width: 100%;
+            padding-top: 125%;
             overflow: hidden;
             background: #F5F3F0;
             margin-top: 48px;
         }
 
         .g-frame {
-            position: absolute; inset: 0;
-            opacity: 0; z-index: 1;
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            z-index: 1;
             transition: opacity 0.85s ease-in-out;
             pointer-events: none;
         }
-        .g-frame.on { opacity:1; z-index: 2; pointer-events: auto; }
+
+        .g-frame.on {
+            opacity: 1;
+            z-index: 2;
+            pointer-events: auto;
+        }
 
         .g-frame img {
-            width: 100%; height: 100%;
-            object-fit: cover;   
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             display: block;
             pointer-events: none;
-            user-select: none; -webkit-user-drag: none;
+            user-select: none;
+            -webkit-user-drag: none;
         }
 
         .gdots {
-            position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%);
-            display: flex; gap: 9px; z-index: 10;
+            position: absolute;
+            bottom: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 9px;
+            z-index: 10;
         }
 
         .gdot {
-            width: 7px; height: 7px; border-radius: 50%;
-            background: rgba(229,169,158,0.3); border: none; cursor: pointer;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: rgba(229, 169, 158, 0.3);
+            border: none;
+            cursor: pointer;
             transition: all 0.3s ease;
         }
-        .gdot.on { background: var(--rose); transform: scale(1.4); box-shadow: 0 0 10px rgba(229,169,158,0.8); }
+
+        .gdot.on {
+            background: var(--rose);
+            transform: scale(1.4);
+            box-shadow: 0 0 10px rgba(229, 169, 158, 0.8);
+        }
 
         .sec-invite {
             padding: 150px 44px;
@@ -176,18 +262,25 @@
 
         .invite-heading {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 22px; font-weight: 400; line-height: 1.65;
+            font-size: 22px;
+            font-weight: 400;
+            line-height: 1.65;
             color: var(--purple);
             margin-bottom: 50px;
         }
 
         .invite-body {
-            font-size: 15px; font-weight: 300;
-            line-height: 2.2; color: var(--text);
+            font-size: 15px;
+            font-weight: 300;
+            line-height: 2.2;
+            color: var(--text);
             word-break: keep-all;
         }
 
-        .rose-em { color: var(--rose); font-weight: 600; }
+        .rose-em {
+            color: var(--rose);
+            font-weight: 600;
+        }
 
         .sec-ticket {
             padding: 100px 36px;
@@ -198,37 +291,59 @@
         .timer-frame {
             border: 1px solid var(--rose);
             padding: 32px 12px;
-            display: flex; justify-content: center; align-items: flex-start; gap: 0;
-            box-shadow: 0 0 36px rgba(229,169,158,0.1);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 0;
+            box-shadow: 0 0 36px rgba(229, 169, 158, 0.1);
             margin-bottom: 48px;
         }
 
-        .t-unit { flex:1; text-align: center; }
+        .t-unit {
+            flex: 1;
+            text-align: center;
+        }
 
         .t-num {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 50px; font-weight: 300; color: var(--rose);
-            line-height: 1; display: block; letter-spacing: -1px;
+            font-size: 50px;
+            font-weight: 300;
+            color: var(--rose);
+            line-height: 1;
+            display: block;
+            letter-spacing: -1px;
         }
 
         .t-lbl {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase;
-            color: var(--text-soft); display: block; margin-top: 10px;
+            font-size: 10px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--text-soft);
+            display: block;
+            margin-top: 10px;
         }
 
         .t-sep {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 34px; font-weight: 300;
-            color: rgba(229,169,158,0.4); padding: 0 3px;
-            align-self: flex-start; margin-top: 10px;
+            font-size: 34px;
+            font-weight: 300;
+            color: rgba(229, 169, 158, 0.4);
+            padding: 0 3px;
+            align-self: flex-start;
+            margin-top: 10px;
         }
 
-        .ticket-form-wrap { text-align: center; }
+        .ticket-form-wrap {
+            text-align: center;
+        }
 
         .ticket-caption {
-            font-size: 13px; font-weight: 300;
-            color: var(--text-soft); margin-bottom: 22px; letter-spacing: 0.3px;
+            font-size: 13px;
+            font-weight: 300;
+            color: var(--text-soft);
+            margin-bottom: 22px;
+            letter-spacing: 0.3px;
         }
 
         .ticket-input-row {
@@ -243,129 +358,246 @@
             width: 100%;
             flex: none;
             padding: 14px 18px;
-            border: 1px solid var(--rose); background: var(--white);
-            font-family: 'Pretendard', sans-serif; font-size: 14px; color: var(--purple);
-            outline: none; letter-spacing: 0.5px;
+            border: 1px solid var(--rose);
+            background: var(--white);
+            font-family: 'Pretendard', sans-serif;
+            font-size: 14px;
+            color: var(--purple);
+            outline: none;
+            letter-spacing: 0.5px;
             transition: box-shadow 0.3s ease;
         }
-        .ticket-name:focus { box-shadow: 0 0 0 3px rgba(229,169,158,0.2); }
-        .ticket-name::placeholder { color: #CCC; }
+
+        .ticket-name:focus {
+            box-shadow: 0 0 0 3px rgba(229, 169, 158, 0.2);
+        }
+
+        .ticket-name::placeholder {
+            color: #CCC;
+        }
 
         .ticket-issue-btn {
             width: 100%;
             white-space: normal;
             padding: 14px 22px;
-            background: var(--purple); color: var(--rose);
-            border: none; cursor: pointer;
+            background: var(--purple);
+            color: var(--rose);
+            border: none;
+            cursor: pointer;
             font-family: 'Cormorant Garamond', serif;
-            font-size: 14px; letter-spacing: 2px; font-weight: 400;
+            font-size: 14px;
+            letter-spacing: 2px;
+            font-weight: 400;
             transition: all 0.3s ease;
         }
-        .ticket-issue-btn:hover { background: #1e1020; box-shadow: 0 4px 20px rgba(44,26,48,0.3); }
+
+        .ticket-issue-btn:hover {
+            background: #1e1020;
+            box-shadow: 0 4px 20px rgba(44, 26, 48, 0.3);
+        }
 
         @media (min-width: 400px) {
-            .ticket-input-row { flex-direction: row; }
-            .ticket-name { flex: 1; width: auto; }
-            .ticket-issue-btn { width: auto; white-space: nowrap; }
+            .ticket-input-row {
+                flex-direction: row;
+            }
+
+            .ticket-name {
+                flex: 1;
+                width: auto;
+            }
+
+            .ticket-issue-btn {
+                width: auto;
+                white-space: nowrap;
+            }
         }
 
         .vip-ticket {
-            display: none;  
+            display: none;
             background: var(--beige);
             border: 1.5px solid var(--purple);
             padding: 36px 28px;
             text-align: center;
-            position: relative; overflow: hidden;
-            animation: ticketReveal 0.7s cubic-bezier(0.22,1,0.36,1);
-            box-shadow: 0 12px 50px rgba(229,169,158,0.15), 0 0 40px rgba(44,26,48,0.05);
+            position: relative;
+            overflow: hidden;
+            animation: ticketReveal 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+            box-shadow: 0 12px 50px rgba(229, 169, 158, 0.15), 0 0 40px rgba(44, 26, 48, 0.05);
         }
 
         @keyframes ticketReveal {
-            from { opacity:0; transform: scale(0.92) translateY(20px); }
-            to   { opacity:1; transform: scale(1) translateY(0); }
+            from {
+                opacity: 0;
+                transform: scale(0.92) translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
         }
 
         .vip-ticket::before {
             content: '';
-            position: absolute; top: -50%; left: -20%;
-            width: 140%; height: 200%;
-            background: radial-gradient(ellipse at center, rgba(229,169,158,0.15) 0%, transparent 65%);
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 140%;
+            height: 200%;
+            background: radial-gradient(ellipse at center, rgba(229, 169, 158, 0.15) 0%, transparent 65%);
             pointer-events: none;
         }
 
         .ticket-top-label {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 11px; letter-spacing: 5px;
-            text-transform: uppercase; color: var(--purple);
-            opacity: 0.7; margin-bottom: 20px;
+            font-size: 11px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--purple);
+            opacity: 0.7;
+            margin-bottom: 20px;
         }
 
         .ticket-vip-badge {
-            display: inline-block; padding: 4px 20px;
-            border: 1px solid var(--purple); border-radius: 100px;
+            display: inline-block;
+            padding: 4px 20px;
+            border: 1px solid var(--purple);
+            border-radius: 100px;
             font-family: 'Cormorant Garamond', serif;
-            font-size: 12px; letter-spacing: 4px;
-            color: var(--purple); margin-bottom: 24px;
+            font-size: 12px;
+            letter-spacing: 4px;
+            color: var(--purple);
+            margin-bottom: 24px;
             font-weight: 500;
         }
 
         .ticket-name-display {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 32px; font-weight: 600; font-style: italic;
-            color: var(--purple); letter-spacing: 1px;
+            font-size: 32px;
+            font-weight: 600;
+            font-style: italic;
+            color: var(--purple);
+            letter-spacing: 1px;
             margin-bottom: 8px;
             word-break: keep-all;
         }
 
         .ticket-name-label {
-            font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
-            color: rgba(44, 26, 48, 0.5); margin-bottom: 28px;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(44, 26, 48, 0.5);
+            margin-bottom: 28px;
         }
 
         .ticket-divider {
-            display: flex; align-items: center; gap: 10px; margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 24px;
         }
-        .ticket-divider::before, .ticket-divider::after {
-            content: ''; flex:1; height: 1px; background: rgba(44, 26, 48, 0.15);
-        }
-        .ticket-divider span { font-size: 14px; color: var(--rose); }
 
-        .barcode-wrap { margin-bottom: 20px; }
+        .ticket-divider::before,
+        .ticket-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(44, 26, 48, 0.15);
+        }
+
+        .ticket-divider span {
+            font-size: 14px;
+            color: var(--rose);
+        }
+
+        .barcode-wrap {
+            margin-bottom: 20px;
+        }
+
         .barcode-lines {
-            display: flex; align-items: stretch; justify-content: center;
-            gap: 2px; height: 52px; margin-bottom: 8px;
-        }
-        .barcode-lines span {
-            display: inline-block; background: var(--purple);
-            border-radius: 1px; opacity: 0.75;
-        }
-        .ticket-code {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 11px; letter-spacing: 3px;
-            color: var(--purple); opacity: 0.6;
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            gap: 2px;
+            height: 52px;
+            margin-bottom: 8px;
         }
 
-        .qr-wrap { display: flex; justify-content: center; margin-bottom: 24px; }
-        .qr-box { width: 72px; height: 72px; border: 1.5px solid rgba(44, 26, 48, 0.3); padding: 6px; position: relative; }
-        .qr-inner {
-            width: 100%; height: 100%;
-            background:
-                linear-gradient(var(--purple), var(--purple)) 0 0 / 22px 22px no-repeat,
-                linear-gradient(var(--purple), var(--purple)) 100% 0 / 22px 22px no-repeat,
-                linear-gradient(var(--purple), var(--purple)) 0 100% / 22px 22px no-repeat,
-                linear-gradient(var(--purple), var(--purple)) 50% 50% / 16px 16px no-repeat,
-                linear-gradient(rgba(44, 26, 48, 0.1), rgba(44, 26, 48, 0.1));
+        .barcode-lines span {
+            display: inline-block;
+            background: var(--purple);
+            border-radius: 1px;
             opacity: 0.75;
         }
-        .qr-inner::after {
-            content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-            width: 12px; height: 12px; border: 1.5px solid rgba(44, 26, 48, 0.5);
+
+        .ticket-code {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: var(--purple);
+            opacity: 0.6;
         }
 
-        .ticket-event { font-size: 12px; font-weight: 400; color: var(--purple); opacity: 0.8; letter-spacing: 0.5px; }
-        .ticket-date { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-weight: 500; color: var(--purple); letter-spacing: 1px; margin-top: 6px; }
-        .ticket-reset { margin-top: 20px; font-size: 12px; color: var(--text-soft); cursor: pointer; letter-spacing: 0.5px; text-decoration: underline; }
-        .ticket-reset:hover { color: var(--rose); }
+        .qr-wrap {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .qr-box {
+            width: 72px;
+            height: 72px;
+            border: 1.5px solid rgba(44, 26, 48, 0.3);
+            padding: 6px;
+            position: relative;
+        }
+
+        .qr-inner {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(var(--purple), var(--purple)) 0 0 / 22px 22px no-repeat, linear-gradient(var(--purple), var(--purple)) 100% 0 / 22px 22px no-repeat, linear-gradient(var(--purple), var(--purple)) 0 100% / 22px 22px no-repeat, linear-gradient(var(--purple), var(--purple)) 50% 50% / 16px 16px no-repeat, linear-gradient(rgba(44, 26, 48, 0.1), rgba(44, 26, 48, 0.1));
+            opacity: 0.75;
+        }
+
+        .qr-inner::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 12px;
+            border: 1.5px solid rgba(44, 26, 48, 0.5);
+        }
+
+        .ticket-event {
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--purple);
+            opacity: 0.8;
+            letter-spacing: 0.5px;
+        }
+
+        .ticket-date {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--purple);
+            letter-spacing: 1px;
+            margin-top: 6px;
+        }
+
+        .ticket-reset {
+            margin-top: 20px;
+            font-size: 12px;
+            color: var(--text-soft);
+            cursor: pointer;
+            letter-spacing: 0.5px;
+            text-decoration: underline;
+        }
+
+        .ticket-reset:hover {
+            color: var(--rose);
+        }
 
         .sec-benefit {
             padding: 100px 36px;
@@ -379,22 +611,47 @@
             background: var(--beige);
             padding: 40px 24px;
             margin-top: 32px;
-            box-shadow: 0 10px 30px rgba(229,169,158,0.08);
+            box-shadow: 0 10px 30px rgba(229, 169, 158, 0.08);
             position: relative;
         }
 
         .benefit-tag {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 11px; font-weight: 600; letter-spacing: 2px;
-            color: var(--purple); background: var(--white);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: var(--purple);
+            background: var(--white);
             border: 1px solid var(--rose);
-            padding: 4px 14px; border-radius: 50px;
-            position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+            padding: 4px 14px;
+            border-radius: 50px;
+            position: absolute;
+            top: -13px;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
-        .benefit-title { font-size: 16px; font-weight: 600; color: var(--purple); margin-bottom: 16px; letter-spacing: 0.5px; }
-        .benefit-desc { font-size: 13.5px; font-weight: 300; line-height: 2.1; color: var(--text); word-break: keep-all; }
-        .benefit-highlight { color: var(--purple); font-weight: 600; border-bottom: 1px solid var(--rose); }
+        .benefit-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--purple);
+            margin-bottom: 16px;
+            letter-spacing: 0.5px;
+        }
+
+        .benefit-desc {
+            font-size: 13.5px;
+            font-weight: 300;
+            line-height: 2.1;
+            color: var(--text);
+            word-break: keep-all;
+        }
+
+        .benefit-highlight {
+            color: var(--purple);
+            font-weight: 600;
+            border-bottom: 1px solid var(--rose);
+        }
 
         .sec-info {
             padding: 100px 44px;
@@ -404,32 +661,45 @@
 
         .info-grid {
             display: grid;
-            grid-template-columns: 90px 1fr; 
-            column-gap: 18px; row-gap: 0;
+            grid-template-columns: 90px 1fr;
+            column-gap: 18px;
+            row-gap: 0;
             margin-bottom: 48px;
         }
 
-        .ig-row { display: contents; }
+        .ig-row {
+            display: contents;
+        }
 
         .ig-key {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 11px; font-weight: 600;
-            letter-spacing: 2.5px; text-transform: uppercase;
-            color: var(--rose); 
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--rose);
             padding-top: 6px;
-            padding-bottom: 40px; 
+            padding-bottom: 40px;
         }
 
         .ig-val {
-            font-size: 14.5px; font-weight: 400;
-            line-height: 1.9; color: var(--purple);
+            font-size: 14.5px;
+            font-weight: 400;
+            line-height: 1.9;
+            color: var(--purple);
             padding-bottom: 40px;
             display: flex;
             flex-direction: column;
             position: relative;
         }
 
-        .ig-val .sub { font-size: 12.5px; font-weight: 300; color: var(--text-soft); display: block; margin-top: 4px; }
+        .ig-val .sub {
+            font-size: 12.5px;
+            font-weight: 300;
+            color: var(--text-soft);
+            display: block;
+            margin-top: 4px;
+        }
 
         .ig-val::after {
             content: '';
@@ -437,106 +707,311 @@
             width: 100%;
             height: 1px;
             background-color: var(--line);
-            margin-top: 18px;       
-            margin-bottom: -18px;   
+            margin-top: 18px;
+            margin-bottom: -18px;
         }
 
         .ig-row:last-child .ig-key,
-        .ig-row:last-child .ig-val { padding-bottom: 0; }
-        .ig-row:last-child .ig-val::after { display: none; }
+        .ig-row:last-child .ig-val {
+            padding-bottom: 0;
+        }
 
-        .rsvp-wrap { width: 100%; margin-top: 12px; }
+        .ig-row:last-child .ig-val::after {
+            display: none;
+        }
+
+        .rsvp-wrap {
+            width: 100%;
+            margin-top: 12px;
+        }
+
         .rsvp-btn {
-            display: block; width: 100%;
-            padding: 21px 0; text-align: center;
-            font-size: 14px; font-weight: 500; letter-spacing: 2px;
-            color: var(--purple); background: transparent;
-            border: 1px solid var(--rose); text-decoration: none;
-            position: relative; overflow: hidden; z-index: 1;
-            transition: color 0.5s ease, border-color 0.5s ease, transform 0.5s cubic-bezier(0.22,1,0.36,1), box-shadow 0.5s ease;
+            display: block;
+            width: 100%;
+            padding: 21px 0;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            color: var(--purple);
+            background: transparent;
+            border: 1px solid var(--rose);
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: color 0.5s ease, border-color 0.5s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s ease;
         }
-        .rsvp-btn::before {
-            content: ''; position: absolute; inset: 0;
-            background: var(--purple); z-index: -1;
-            transform: scaleX(0); transform-origin: left center;
-            transition: transform 0.5s cubic-bezier(0.22,1,0.36,1);
-        }
-        .rsvp-btn:hover { color: var(--white); border-color: var(--purple); transform: scale(1.025); box-shadow: 0 10px 28px rgba(44,26,48,0.2); }
-        .rsvp-btn:hover::before { transform: scaleX(1); }
 
-        .detail-wrap { width: 100%; margin-top: 16px; }
+        .rsvp-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--purple);
+            z-index: -1;
+            transform: scaleX(0);
+            transform-origin: left center;
+            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .rsvp-btn:hover {
+            color: var(--white);
+            border-color: var(--purple);
+            transform: scale(1.025);
+            box-shadow: 0 10px 28px rgba(44, 26, 48, 0.2);
+        }
+
+        .rsvp-btn:hover::before {
+            transform: scaleX(1);
+        }
+
+        .detail-wrap {
+            width: 100%;
+            margin-top: 16px;
+        }
+
         .detail-btn {
-            display: block; width: 100%;
-            padding: 16px 0; text-align: center;
-            font-size: 13px; font-weight: 500; letter-spacing: 1.5px;
-            color: var(--purple); background: var(--white);
-            border: 1px solid var(--purple); text-decoration: none;
+            display: block;
+            width: 100%;
+            padding: 16px 0;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            color: var(--purple);
+            background: var(--white);
+            border: 1px solid var(--purple);
+            text-decoration: none;
             transition: all 0.4s ease;
         }
+
         .detail-btn:hover {
             background: var(--beige);
-            box-shadow: 0 6px 20px rgba(44,26,48,0.1);
+            box-shadow: 0 6px 20px rgba(44, 26, 48, 0.1);
             transform: translateY(-1px);
         }
 
-        .share-wrap { width: 100%; margin-top: 16px; }
+        .share-wrap {
+            width: 100%;
+            margin-top: 16px;
+        }
+
         .share-btn {
-            display: block; width: 100%;
-            padding: 16px 0; text-align: center;
-            font-size: 13px; font-weight: 400; letter-spacing: 1.5px;
-            color: var(--purple); background: rgba(229, 169, 158, 0.05);
-            border: 1px solid rgba(229, 169, 158, 0.4); cursor: pointer;
+            display: block;
+            width: 100%;
+            padding: 16px 0;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 400;
+            letter-spacing: 1.5px;
+            color: var(--purple);
+            background: rgba(229, 169, 158, 0.05);
+            border: 1px solid rgba(229, 169, 158, 0.4);
+            cursor: pointer;
             transition: all 0.4s ease;
         }
+
         .share-btn:hover {
             background: var(--white);
             border-color: var(--purple);
-            box-shadow: 0 6px 20px rgba(229,169,158,0.15);
+            box-shadow: 0 6px 20px rgba(229, 169, 158, 0.15);
             transform: translateY(-1px);
         }
 
         .inquiry-btn-group {
-            display: flex; gap: 10px; margin-top: 12px; width: 100%;
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+            width: 100%;
         }
+
         .inq-icon-btn {
-            flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px;
-            padding: 12px 0; font-size: 13px; font-weight: 400; text-decoration: none;
-            color: var(--purple); background: var(--white);
-            border: 1px solid rgba(44, 26, 48, 0.2); transition: all 0.3s ease;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 0;
+            font-size: 13px;
+            font-weight: 400;
+            text-decoration: none;
+            color: var(--purple);
+            background: var(--white);
+            border: 1px solid rgba(44, 26, 48, 0.2);
+            transition: all 0.3s ease;
         }
+
         .inq-icon-btn:hover {
-            border-color: var(--purple); background: var(--beige);
-            box-shadow: 0 4px 12px rgba(44,26,48,0.05);
+            border-color: var(--purple);
+            background: var(--beige);
+            box-shadow: 0 4px 12px rgba(44, 26, 48, 0.05);
         }
 
-        .map-box { margin-top: 60px; width: 100%; }
-        .map-lbl { 
-            font-family: 'Cormorant Garamond', serif; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; 
-            color: var(--purple); opacity: 0.8; text-align: center; margin-bottom: 22px; font-weight: 600;
+        .map-box {
+            margin-top: 60px;
+            width: 100%;
         }
-        .map-img { width: 100%; height: auto; display: block; object-fit: contain; }
 
-        .hero-title, .invite-heading, .invite-body, .ig-val, .benefit-desc {
+        .map-lbl {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--purple);
+            opacity: 0.8;
+            text-align: center;
+            margin-bottom: 22px;
+            font-weight: 600;
+        }
+
+        .map-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        .hero-title,
+        .invite-heading,
+        .invite-body,
+        .ig-val,
+        .benefit-desc {
             text-shadow: 0 0 8px rgba(255, 255, 255, 0.9), 0 0 4px rgba(255, 255, 255, 0.5);
         }
 
-        .card-footer { padding: 36px 44px; text-align: center; border-top: 1px solid var(--line); }
-        .footer-txt { font-family: 'Cormorant Garamond', serif; font-size: 12px; letter-spacing: 3px; color: #C4BFBC; }
+        .card-footer {
+            padding: 36px 44px;
+            text-align: center;
+            border-top: 1px solid var(--line);
+        }
+
+        .footer-txt {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 12px;
+            letter-spacing: 3px;
+            color: #C4BFBC;
+        }
+
+        /* 👑 미니멀 모달 안내 팝업 레이아웃 스타일 */
+        .custom-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(44, 26, 48, 0.6);
+            backdrop-filter: blur(8px);
+            z-index: 200000;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .custom-modal.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: var(--beige);
+            border: 1px solid var(--rose);
+            padding: 36px 24px;
+            text-align: center;
+            width: 88%;
+            max-width: 340px;
+            box-shadow: var(--aura);
+            animation: ticketReveal 0.5s ease-out;
+        }
+
+        .modal-msg {
+            font-size: 15px;
+            color: var(--purple);
+            font-weight: 400;
+            margin-bottom: 24px;
+            word-break: keep-all;
+        }
+
+        .modal-btn {
+            padding: 10px 28px;
+            background: var(--purple);
+            color: var(--rose);
+            border: none;
+            font-size: 12px;
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
+
+        /* 🥂 리뉴얼: 럭셔리 티켓 쉐이프 바우처 디자인 시스템 */
+        .premium-voucher {
+            display: none;
+            background: #FFF;
+            border: 1px solid var(--purple);
+            padding: 28px 24px;
+            margin-top: 24px;
+            text-align: center;
+            position: relative;
+            animation: ticketReveal 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+            box-shadow: 0 10px 30px rgba(44, 26, 48, 0.08);
+            overflow: hidden;
+        }
+
+        /* 양옆 티켓 펀칭 구멍 구현 */
+        .premium-voucher::before,
+        .premium-voucher::after {
+            content: '';
+            position: absolute;
+            top: 40%;
+            width: 16px;
+            height: 16px;
+            background: var(--beige);
+            border: 1px solid var(--purple);
+            border-radius: 50%;
+            z-index: 10;
+        }
+
+        .premium-voucher::before {
+            left: -9px;
+        }
+
+        .premium-voucher::after {
+            right: -9px;
+        }
 
         @media (max-width: 480px) {
-            #card { margin: 12px 8px; }
-            .hero-title { font-size: 36px; }
-            .t-num { font-size: 40px; }
-            .sec-invite, .sec-info { padding-left: 28px; padding-right: 28px; }
+            #card {
+                margin: 12px 8px;
+            }
+
+            .hero-title {
+                font-size: 36px;
+            }
+
+            .t-num {
+                font-size: 40px;
+            }
+
+            .sec-invite,
+            .sec-info {
+                padding-left: 28px;
+                padding-right: 28px;
+            }
         }
     </style>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
 </head>
+
 <body>
 
     <canvas id="sparks"></canvas>
+
+    <div class="custom-modal" id="noticeModal">
+        <div class="modal-content">
+            <p class="modal-msg" id="modalMessage">아쉽지만 다음에 만나요 ✦</p>
+            <button class="modal-btn" onclick="closeModal()">확인</button>
+        </div>
+    </div>
 
     <nav class="glass-nav">
         <button class="nav-icon on" title="모바일 뷰 (430px)" onclick="setView('mobile', this)">
@@ -554,7 +1029,8 @@
 
         <section class="sec-hero">
             <span class="sec-num appear">01. JANYTREE</span>
-            <img src="./Picture/제니트리로고.png" alt="제니트리 브랜드 로고" class="brand-logo appear d1" onerror="this.style.display='none';">
+            <img src="./Picture/제니트리로고.png" alt="제니트리 브랜드 로고" class="brand-logo appear d1"
+                onerror="this.style.display='none';">
             <h1 class="hero-title appear d2">A New Era<br><em>of Radiance</em> ✨</h1>
             <div class="rose-line appear d3"></div>
         </section>
@@ -574,9 +1050,9 @@
             </div>
             <div class="gdots" id="gdots">
                 <button class="gdot on" onclick="goTo(0)" aria-label="1번"></button>
-                <button class="gdot"    onclick="goTo(1)" aria-label="2번"></button>
-                <button class="gdot"    onclick="goTo(2)" aria-label="3번"></button>
-                <button class="gdot"    onclick="goTo(3)" aria-label="4번"></button>
+                <button class="gdot" onclick="goTo(1)" aria-label="2번"></button>
+                <button class="gdot" onclick="goTo(2)" aria-label="3번"></button>
+                <button class="gdot" onclick="goTo(3)" aria-label="4번"></button>
             </div>
         </div>
 
@@ -627,13 +1103,15 @@
 
             <div class="ticket-form-wrap appear d3" id="ticketForm">
                 <p class="ticket-caption">성함과 참석 여부를 입력하시면 VIP 디지털 티켓이 발급됩니다.</p>
-                
+
                 <div style="display: flex; justify-content: center; gap: 24px; margin-bottom: 20px;">
                     <label style="cursor: pointer; font-size: 14px; color: var(--purple); font-weight: 500;">
-                        <input type="radio" name="attendRadio" value="참석" checked style="accent-color: var(--purple); margin-right: 6px;"> ✨ 참석
+                        <input type="radio" name="attendRadio" value="참석" checked
+                            style="accent-color: var(--purple); margin-right: 6px;"> ✨ 참석
                     </label>
                     <label style="cursor: pointer; font-size: 14px; color: var(--text-soft);">
-                        <input type="radio" name="attendRadio" value="불참" style="accent-color: var(--purple); margin-right: 6px;"> 다음 기회에
+                        <input type="radio" name="attendRadio" value="불참"
+                            style="accent-color: var(--purple); margin-right: 6px;"> 다음 기회에
                     </label>
                 </div>
 
@@ -647,10 +1125,16 @@
                 <p class="ticket-top-label">✦ Exclusive VIP Pass ✦</p>
                 <div class="ticket-vip-badge">V I P</div>
                 <p class="ticket-name-display" id="ticketNameDisplay">홍길동</p>
-                <p id="ticketAttendDisplay" style="font-size: 11px; color: var(--rose); font-weight: 500; letter-spacing: 1px; margin-top: -4px; margin-bottom: 12px;"></p>
+                <p id="ticketAttendDisplay"
+                    style="font-size: 11px; color: var(--rose); font-weight: 500; letter-spacing: 1px; margin-top: -4px; margin-bottom: 12px;">
+                </p>
                 <p class="ticket-name-label">Guest Name</p>
                 <div class="ticket-divider"><span>✦</span></div>
-                <div class="qr-wrap"><div class="qr-box"><div class="qr-inner"></div></div></div>
+                <div class="qr-wrap">
+                    <div class="qr-box">
+                        <div class="qr-inner"></div>
+                    </div>
+                </div>
                 <div class="barcode-wrap">
                     <div class="barcode-lines" id="barcodeLines"></div>
                     <p class="ticket-code" id="ticketCode">VIP-2026-RNPL</p>
@@ -659,7 +1143,8 @@
                 <p class="ticket-event">클리닉스 라뉴필 쇼케이스</p>
                 <p class="ticket-date">2026. 07. 01 (수) 17:00</p>
 
-                <button onclick="downloadComponent('vipTicket', 'LAHNUPEEL_VIP_TICKET')" style="width: 100%; margin-top: 24px; padding: 13px 0; background: transparent; color: var(--purple); border: 1px solid var(--purple); font-size: 12px; cursor: pointer; letter-spacing: 1.5px; font-weight: 500; font-family: 'Pretendard', sans-serif; margin-bottom: 10px;">
+                <button onclick="downloadComponent('vipTicket', 'LAHNUPEEL_VIP_TICKET')"
+                    style="width: 100%; margin-top: 24px; padding: 13px 0; background: transparent; color: var(--purple); border: 1px solid var(--purple); font-size: 12px; cursor: pointer; letter-spacing: 1.5px; font-weight: 500; font-family: 'Pretendard', sans-serif; margin-bottom: 10px;">
                     <i class="fas fa-download" style="margin-right: 6px;"></i> 티켓 이미지 저장하기
                 </button>
                 <p class="ticket-reset" onclick="resetTicket()">↩ 이름 다시 입력</p>
@@ -681,26 +1166,50 @@
                     <span class="benefit-highlight">특별 바우처</span>를 증정합니다. 🎁
                 </p>
 
-                <div id="giftForm" style="border-top: 1px dashed rgba(44,26,48,0.15); padding-top: 24px; text-align: left;">
-                    <p style="font-size: 13px; color: var(--purple); font-weight: 500; margin-bottom: 12px; text-align: center; letter-spacing: 0.5px;">✦ 특별 키트 교환권 신청하기 ✦</p>
+                <div id="giftForm"
+                    style="border-top: 1px dashed rgba(44,26,48,0.15); padding-top: 24px; text-align: left;">
+                    <p
+                        style="font-size: 13px; color: var(--purple); font-weight: 500; margin-bottom: 12px; text-align: center; letter-spacing: 0.5px;">
+                        ✦ 특별 키트 교환권 신청하기 ✦</p>
                     <div style="display: flex; flex-direction: column; gap: 8px;">
-                        <input type="text" id="giftAffiliation" placeholder="소속을 입력하세요 (예: 제니트리 의원)" style="width: 100%; padding: 13px; border: 1px solid var(--rose); font-size: 13px; outline: none; background: var(--white); font-family: inherit;">
-                        <input type="text" id="giftName" placeholder="성함을 입력하세요" style="width: 100%; padding: 13px; border: 1px solid var(--rose); font-size: 13px; outline: none; background: var(--white); font-family: inherit;">
-                        <button onclick="issueGiftTicket()" style="width: 100%; padding: 14px; background: var(--purple); color: var(--rose); border: none; font-size: 13px; letter-spacing: 1px; cursor: pointer; font-weight: 500; font-family: inherit;">확인 및 교환권 발급</button>
+                        <input type="text" id="giftAffiliation" placeholder="소속을 입력하세요 (예: 제니트리 의원)"
+                            style="width: 100%; padding: 13px; border: 1px solid var(--rose); font-size: 13px; outline: none; background: var(--white); font-family: inherit;">
+                        <input type="text" id="giftName" placeholder="성함을 입력하세요"
+                            style="width: 100%; padding: 13px; border: 1px solid var(--rose); font-size: 13px; outline: none; background: var(--white); font-family: inherit;">
+                        <button onclick="issueGiftTicket()"
+                            style="width: 100%; padding: 14px; background: var(--purple); color: var(--rose); border: none; font-size: 13px; letter-spacing: 1px; cursor: pointer; font-weight: 500; font-family: inherit;">확인
+                            및 교환권 발급</button>
                     </div>
                 </div>
 
-                <div id="giftVoucher" style="display: none; border: 1px solid var(--purple); background: var(--white); padding: 28px 24px; margin-top: 20px; text-align: center; position: relative; animation: ticketReveal 0.6s cubic-bezier(0.22,1,0.36,1);">
-                    <p style="font-family: 'Cormorant Garamond', serif; font-size: 11px; letter-spacing: 4px; color: var(--rose); margin-bottom: 4px;">VIP EXCLUSIVE GIFT</p>
-                    <h4 style="font-size: 17px; color: var(--purple); font-weight: 600; margin-bottom: 16px; letter-spacing: 0.5px;">스페셜 키트 교환권</h4>
-                    <div style="border-top: 1px dashed var(--rose); border-bottom: 1px dashed var(--rose); padding: 14px 0; margin-bottom: 16px;">
-                        <p style="font-size: 14px; color: var(--purple); font-weight: 600; letter-spacing: 0.3px;" id="voucherUserDisplay">제니트리 의원 / 홍길동 VIP님</p>
+                <div class="premium-voucher" id="giftVoucher">
+                    <div
+                        style="border: 1px dashed rgba(229,169,158,0.5); padding: 24px 16px; background: linear-gradient(135deg, #FFF 0%, var(--beige) 100%);">
+                        <p
+                            style="font-family: 'Cormorant Garamond', serif; font-size: 10px; letter-spacing: 4px; color: var(--rose); margin-bottom: 4px; text-transform: uppercase; font-weight: 600;">
+                            V I p &nbsp; E x c l u s i v e &nbsp; G i f t</p>
+                        <h4
+                            style="font-size: 18px; color: var(--purple); font-weight: 600; margin-bottom: 4px; letter-spacing: 0.5px;">
+                            스페셜 키트 교환권</h4>
+                        <p
+                            style="font-size: 11px; color: var(--rose); font-weight: 500; margin-bottom: 18px; letter-spacing: 1px;">
+                            LAHNUPEEL SHOWCASE 2026</p>
+
+                        <div
+                            style="border-top: 1px dashed var(--purple); border-bottom: 1px dashed var(--purple); padding: 14px 0; margin-bottom: 18px; background: rgba(255,255,255,0.6);">
+                            <p style="font-size: 14px; color: var(--purple); font-weight: 600; letter-spacing: 0.5px;"
+                                id="voucherUserDisplay">제니트리 의원 / 홍길동 VIP님</p>
+                        </div>
+
+                        <p
+                            style="font-size: 11px; color: var(--text-soft); margin-bottom: 22px; word-break: keep-all; line-height: 1.6;">
+                            본 바우처 티켓을 현장 인포메이션 안내 데스크에<br>제시하시면 스페셜 키트 교환이 가능합니다.</p>
+
+                        <button onclick="downloadComponent('giftVoucher', 'LAHNUPEEL_GIFT_VOUCHER')"
+                            style="width: 100%; padding: 13px 0; background: var(--purple); color: var(--rose); border: none; font-size: 12px; cursor: pointer; letter-spacing: 1.5px; font-weight: 500; font-family: 'Pretendard', sans-serif;">
+                            <i class="fas fa-download" style="margin-right: 6px;"></i> 교환권 이미지 저장하기
+                        </button>
                     </div>
-                    <p style="font-size: 11.5px; color: var(--text-soft); margin-bottom: 20px;">본 교환권을 현장 인포메이션에 제시해 주세요.</p>
-                    
-                    <button onclick="downloadComponent('giftVoucher', 'LAHNUPEEL_GIFT_VOUCHER')" style="width: 100%; padding: 13px 0; background: var(--purple); color: var(--rose); border: none; font-size: 12px; cursor: pointer; letter-spacing: 1.5px; font-weight: 500; font-family: 'Pretendard', sans-serif;">
-                        <i class="fas fa-download" style="margin-right: 6px;"></i> 교환권 이미지 저장하기
-                    </button>
                 </div>
             </div>
         </section>
@@ -713,14 +1222,16 @@
 
             <div class="info-grid">
                 <div class="ig-row">
-                    <span class="ig-key appear d1"><i class="fas fa-calendar-alt" style="font-size:10px;margin-right:5px;"></i>Date</span>
+                    <span class="ig-key appear d1"><i class="fas fa-calendar-alt"
+                            style="font-size:10px;margin-right:5px;"></i>Date</span>
                     <div class="ig-val appear d1">
                         2026. 07. 01 (수)
                         <span class="sub">오후 5:00 — 오후 9:00</span>
                     </div>
                 </div>
                 <div class="ig-row">
-                    <span class="ig-key appear d2"><i class="fas fa-star" style="font-size:10px;margin-right:5px;"></i>Program</span>
+                    <span class="ig-key appear d2"><i class="fas fa-star"
+                            style="font-size:10px;margin-right:5px;"></i>Program</span>
                     <div class="ig-val appear d2">
                         17:00 &mdash; 신제품 프리쇼<br>
                         18:00 &mdash; 메이크업 메가 쇼<br>
@@ -728,27 +1239,30 @@
                     </div>
                 </div>
                 <div class="ig-row">
-                    <span class="ig-key appear d3"><i class="fas fa-map-marker-alt" style="font-size:10px;margin-right:5px;"></i>Venue</span>
+                    <span class="ig-key appear d3"><i class="fas fa-map-marker-alt"
+                            style="font-size:10px;margin-right:5px;"></i>Venue</span>
                     <div class="ig-val appear d3">
                         제니트리 쇼룸
                         <span class="sub">서울 금천구 가산디지털2로 67, 1403호</span>
                     </div>
                 </div>
-                
+
                 <div class="ig-row">
-                    <span class="ig-key appear d4"><i class="fas fa-comment-dots" style="font-size:10px;margin-right:5px;"></i>Inquiry</span>
+                    <span class="ig-key appear d4"><i class="fas fa-comment-dots"
+                            style="font-size:10px;margin-right:5px;"></i>Inquiry</span>
                     <div class="ig-val appear d4">
                         <span style="font-weight: 500; color: var(--purple);">1661-2383</span>
                         <span class="sub" style="margin-top: 2px; margin-bottom: 8px;">pro3@janytree.com</span>
-                        
+
                         <div class="inquiry-btn-group">
                             <a href="tel:1661-2383" class="inq-icon-btn"><i class="fas fa-phone-alt"></i> 전화하기</a>
-                            <a href="mailto:pro3@janytree.com" class="inq-icon-btn"><i class="fas fa-envelope"></i> 메일보내기</a>
+                            <a href="mailto:pro3@janytree.com" class="inq-icon-btn"><i class="fas fa-envelope"></i>
+                                메일보내기</a>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
             <div class="rsvp-wrap appear d4">
                 <a href="#" class="rsvp-btn" onclick="alert('예약 페이지로 이동합니다.'); return false;">
                     🥂 &nbsp; 쇼케이스 참석 예약하기
@@ -756,7 +1270,8 @@
             </div>
 
             <div class="detail-wrap appear d4">
-                <a href="https://intomedipro.com/shop_view/?idx=170" target="_blank" rel="noopener noreferrer" class="detail-btn">
+                <a href="https://intomedipro.com/shop_view/?idx=170" target="_blank" rel="noopener noreferrer"
+                    class="detail-btn">
                     <i class="fas fa-search" style="margin-right: 6px; font-size: 11px;"></i> 클리닉스 라뉴필 제품 알아보기
                 </a>
             </div>
@@ -782,14 +1297,7 @@
     <script>
         "use strict";
 
-        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        // Supabase 원격 인증 모듈 연동 고정 단일화
-        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        const SUPABASE_URL = "https://jczwmpbvttwennzfvsae.supabase.co"; 
-        const SUPABASE_KEY = "sb_publishable_uOH2O9XfGf9Hvv6GAdNaEQ_HpSrrcgW"; 
-        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-        async function issueTicket() {
+        function issueTicket() {
             const name = document.getElementById('nameInput').value.trim();
             const attendance = document.querySelector('input[name="attendRadio"]:checked').value;
 
@@ -799,40 +1307,33 @@
                 return;
             }
 
-            try {
-                const { error } = await supabase
-                    .from('tickets')
-                    .insert([{ name: name, attendance: attendance }]);
-
-                if (error) throw error;
-
-                document.getElementById('ticketNameDisplay').textContent = name + ' 님';
-                document.getElementById('ticketAttendDisplay').textContent = `[쇼케이스 ${attendance} 확정 게스트]`;
-                document.getElementById('ticketCode').textContent = 'VIP-' + Math.random().toString(36).substring(2,6).toUpperCase() + '-2026';
-
-                const barcodeContainer = document.getElementById('barcodeLines');
-                barcodeContainer.innerHTML = '';
-                const widths = [1,2,1,3,1,2,1,1,3,2,1,1,2,1,2,3,1,1,2,1,1,3,1,2,1];
-                widths.forEach(w => {
-                    const bar = document.createElement('span');
-                    bar.style.width = (w * 2) + 'px';
-                    bar.style.opacity = (0.4 + Math.random() * 0.5);
-                    barcodeContainer.appendChild(bar);
-                });
-
-                document.getElementById('ticketForm').style.display = 'none';
-                const ticket = document.getElementById('vipTicket');
-                ticket.style.display = 'block';
-                ticket.classList.add('show');
-                setTimeout(() => ticket.scrollIntoView({ behavior:'smooth', block:'center' }), 100);
-
-            } catch (err) {
-                console.error("데이터 저장 실패:", err);
-                alert("네트워크 서버 통신 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.");
+            if (attendance === "불참") {
+                openModal("아쉽지만 다음에 만나요 ✦");
+                return;
             }
+
+            document.getElementById('ticketNameDisplay').textContent = name + ' 님';
+            document.getElementById('ticketAttendDisplay').textContent = `[쇼케이스 ${attendance} 확정 게스트]`;
+            document.getElementById('ticketCode').textContent = 'VIP-' + Math.random().toString(36).substring(2, 6).toUpperCase() + '-2026';
+
+            const barcodeContainer = document.getElementById('barcodeLines');
+            barcodeContainer.innerHTML = '';
+            const widths = [1, 2, 1, 3, 1, 2, 1, 1, 3, 2, 1, 1, 2, 1, 2, 3, 1, 1, 2, 1, 1, 3, 1, 2, 1];
+            widths.forEach(w => {
+                const bar = document.createElement('span');
+                bar.style.width = (w * 2) + 'px';
+                bar.style.opacity = (0.4 + Math.random() * 0.5);
+                barcodeContainer.appendChild(bar);
+            });
+
+            document.getElementById('ticketForm').style.display = 'none';
+            const ticket = document.getElementById('vipTicket');
+            ticket.style.display = 'block';
+            ticket.classList.add('show');
+            setTimeout(() => ticket.scrollIntoView({ behavior: 'smooth', block: 'center' }), 100);
         }
 
-        async function issueGiftTicket() {
+        function issueGiftTicket() {
             const affiliation = document.getElementById('giftAffiliation').value.trim();
             const name = document.getElementById('giftName').value.trim();
 
@@ -841,24 +1342,12 @@
                 return;
             }
 
-            try {
-                const { error } = await supabase
-                    .from('gifts')
-                    .insert([{ name: name, affiliation: affiliation }]);
+            document.getElementById('voucherUserDisplay').textContent = `${affiliation} / ${name} VIP님`;
+            document.getElementById('giftForm').style.display = 'none';
 
-                if (error) throw error;
-
-                document.getElementById('voucherUserDisplay').textContent = `${affiliation} / ${name} VIP님`;
-                document.getElementById('giftForm').style.display = 'none';
-                
-                const voucher = document.getElementById('giftVoucher');
-                voucher.style.display = 'block';
-                setTimeout(() => voucher.scrollIntoView({ behavior:'smooth', block:'center' }), 100);
-
-            } catch (err) {
-                console.error("키트 신청 저장 실패:", err);
-                alert("신청 처리 중 데이터베이스 에러가 발생했습니다.");
-            }
+            const voucher = document.getElementById('giftVoucher');
+            voucher.style.display = 'block';
+            setTimeout(() => voucher.scrollIntoView({ behavior: 'smooth', block: 'center' }), 100);
         }
 
         function downloadComponent(elementId, fileName) {
@@ -866,31 +1355,81 @@
             if (!target) return;
 
             const buttons = target.querySelectorAll('button, .ticket-reset');
-            buttons.forEach(btn => btn.style.opacity = '0');
+
+            const tempBarcodeWrap = document.createElement('div');
+            tempBarcodeWrap.style.marginTop = '20px';
+            tempBarcodeWrap.style.marginBottom = '10px';
+            tempBarcodeWrap.style.textAlign = 'center';
+
+            const barcodeLines = document.createElement('div');
+            barcodeLines.style.display = 'flex';
+            barcodeLines.style.alignItems = 'stretch';
+            barcodeLines.style.justifyContent = 'center';
+            barcodeLines.style.gap = '2px';
+            barcodeLines.style.height = '42px';
+            barcodeLines.style.marginBottom = '6px';
+
+            const widths = [1, 2, 1, 3, 1, 2, 1, 1, 3, 2, 1, 1, 2, 1, 2, 3, 1, 1, 2, 1];
+            widths.forEach(w => {
+                const bar = document.createElement('span');
+                bar.style.display = 'inline-block';
+                bar.style.width = (w * 2) + 'px';
+                bar.style.background = '#2C1A30';
+                bar.style.opacity = (0.5 + Math.random() * 0.4);
+                barcodeLines.appendChild(bar);
+            });
+
+            const barcodeText = document.createElement('p');
+            barcodeText.style.fontFamily = "'Cormorant Garamond', serif";
+            barcodeText.style.fontSize = '10px';
+            barcodeText.style.letterSpacing = '2px';
+            barcodeText.style.color = '#2C1A30';
+            barcodeText.style.opacity = '0.5';
+            barcodeText.textContent = 'GIFT-' + Math.random().toString(36).substring(2, 7).toUpperCase();
+
+            tempBarcodeWrap.appendChild(barcodeLines);
+            tempBarcodeWrap.appendChild(barcodeText);
+
+            buttons.forEach(btn => btn.style.display = 'none');
+            target.appendChild(tempBarcodeWrap);
 
             html2canvas(target, {
-                scale: 3, 
-                backgroundColor: '#FDF9F6', 
+                scale: 3,
+                backgroundColor: '#FDF9F6',
                 useCORS: true,
                 logging: false
             }).then(canvas => {
-                buttons.forEach(btn => btn.style.opacity = '1');
+                if (target.contains(tempBarcodeWrap)) {
+                    target.removeChild(tempBarcodeWrap);
+                }
+                buttons.forEach(btn => btn.style.display = '');
 
                 const link = document.createElement('a');
-                link.download = `${fileName}_${new Date().toISOString().slice(0,10)}.png`;
+                link.download = `${fileName}_${new Date().toISOString().slice(0, 10)}.png`;
                 link.href = canvas.toDataURL('image/png');
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
             }).catch(err => {
-                buttons.forEach(btn => btn.style.opacity = '1');
-                console.error('이미지 크롭 에러:', err);
-                alert('이미지 파일 변환 중 오류가 발생했습니다. 브라우저 화면을 직접 캡처해 주셔도 현장 사용이 가능합니다.');
+                if (target.contains(tempBarcodeWrap)) {
+                    target.removeChild(tempBarcodeWrap);
+                }
+                buttons.forEach(btn => btn.style.display = '');
+                console.error('이미지 저장 에러:', err);
+                alert('이미지 저장 중 에러가 발생했습니다.');
             });
         }
 
+        function openModal(msg) {
+            document.getElementById('modalMessage').textContent = msg;
+            document.getElementById('noticeModal').classList.add('show');
+        }
+        function closeModal() {
+            document.getElementById('noticeModal').classList.remove('show');
+        }
+
         function setView(type, btn) {
-            const sizes = { mobile:'430px', tablet:'768px', pc:'1200px' };
+            const sizes = { mobile: '430px', tablet: '768px', pc: '1200px' };
             document.getElementById('card').style.maxWidth = sizes[type] || '430px';
             document.querySelectorAll('.nav-icon').forEach(b => b.classList.remove('on'));
             btn.classList.add('on');
@@ -917,37 +1456,31 @@
         const gEl = document.getElementById('gallery');
         let sx = null, drag = false;
 
-        gEl.addEventListener('mousedown', e => { drag=true; sx=e.clientX; });
+        gEl.addEventListener('mousedown', e => { drag = true; sx = e.clientX; });
         window.addEventListener('mouseup', e => {
-            if (!drag) return; drag=false;
-            if (Math.abs(sx - e.clientX) > 45) { goTo(sx - e.clientX > 0 ? cur+1 : cur-1); resetAuto(); }
+            if (!drag) return; drag = false;
+            if (Math.abs(sx - e.clientX) > 45) { goTo(sx - e.clientX > 0 ? cur + 1 : cur - 1); resetAuto(); }
             sx = null;
         });
-        gEl.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, {passive:true});
+        gEl.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
         gEl.addEventListener('touchend', e => {
             const diff = sx - e.changedTouches[0].clientX;
-            if (Math.abs(diff) > 45) { goTo(diff > 0 ? cur+1 : cur-1); resetAuto(); }
+            if (Math.abs(diff) > 45) { goTo(diff > 0 ? cur + 1 : cur - 1); resetAuto(); }
         });
 
         const TARGET = new Date('2026-07-01T17:00:00+09:00').getTime();
         const $id = id => document.getElementById(id);
-        const pad = n => String(n).padStart(2,'0');
+        const pad = n => String(n).padStart(2, '0');
 
         function tick() {
             const diff = TARGET - Date.now();
-            if (diff <= 0) { ['cd','ch','cm','cs'].forEach(id => $id(id).textContent = '00'); return; }
+            if (diff <= 0) { ['cd', 'ch', 'cm', 'cs'].forEach(id => $id(id).textContent = '00'); return; }
             $id('cd').textContent = pad(Math.floor(diff / 86400000));
             $id('ch').textContent = pad(Math.floor((diff % 86400000) / 3600000));
             $id('cm').textContent = pad(Math.floor((diff % 3600000) / 60000));
             $id('cs').textContent = pad(Math.floor((diff % 60000) / 1000));
         }
         tick(); setInterval(tick, 1000);
-
-        function resetTicket() {
-            document.getElementById('vipTicket').style.display = 'none';
-            document.getElementById('ticketForm').style.display = 'block';
-            document.getElementById('nameInput').value = '';
-        }
 
         const io = new IntersectionObserver(entries => {
             entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); } });
@@ -969,20 +1502,20 @@
         window.addEventListener('resize', resizeCanvas);
 
         const PCOLS = [
-            '#E5A99E',  
-            '#F2D3CE',  
-            '#B496BE',  
-            '#EBD7F5'   
+            '#E5A99E',
+            '#F2D3CE',
+            '#B496BE',
+            '#EBD7F5'
         ];
 
         let particles = [];
-        let mx = innerWidth/2, my = innerHeight/2;
+        let mx = innerWidth / 2, my = innerHeight / 2;
 
         document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
 
         function mkParticle(x, y, isMouse = false) {
             const angle = Math.random() * Math.PI * 2;
-            const speedMultiplier = isMouse ? 1.4 : 0.35; 
+            const speedMultiplier = isMouse ? 1.4 : 0.35;
             const spd = (Math.random() * 0.5 + 0.2) * speedMultiplier;
             const colIdx = Math.random() < 0.7 ? Math.floor(Math.random() * 2) : Math.floor(Math.random() * 2) + 2;
 
@@ -1003,10 +1536,10 @@
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
             if (Math.random() < 0.65) {
-                particles.push(mkParticle(mx + (Math.random()-.5)*20, my + (Math.random()-.5)*20, true));
+                particles.push(mkParticle(mx + (Math.random() - .5) * 20, my + (Math.random() - .5) * 20, true));
             }
             if (Math.random() < 0.03) {
-                particles.push(mkParticle(Math.random()*canvas.width, Math.random()*canvas.height, false));
+                particles.push(mkParticle(Math.random() * canvas.width, Math.random() * canvas.height, false));
             }
 
             particles = particles.filter(p => p.life < p.max);
@@ -1014,7 +1547,7 @@
             for (const p of particles) {
                 p.life++;
                 p.x += p.vx; p.y += p.vy;
-                p.vy += 0.004; 
+                p.vy += 0.004;
 
                 const prog = p.life / p.max;
                 let a = (prog < 0.15) ? (prog / 0.15) * p.alpha : (prog > 0.7) ? ((1 - prog) / 0.3) * p.alpha : p.alpha;
@@ -1023,10 +1556,10 @@
                 ctx.globalAlpha = a;
                 ctx.fillStyle = p.col;
                 ctx.shadowColor = p.col;
-                ctx.shadowBlur = 8; 
+                ctx.shadowBlur = 8;
                 ctx.translate(p.x, p.y);
                 ctx.rotate(p.life * 0.03);
-                ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size);
+                ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
                 ctx.restore();
             }
         }
@@ -1036,7 +1569,7 @@
             const shareData = {
                 title: '✨ A New Era of Radiance',
                 text: '클리닉스 라뉴필 VIP 쇼케이스에 당신을 초대합니다.',
-                url: window.location.href 
+                url: window.location.href
             };
 
             if (navigator.share) {
@@ -1050,10 +1583,10 @@
                     await navigator.clipboard.writeText(window.location.href);
                     const sBtn = document.querySelector('.share-btn');
                     const originalHTML = sBtn.innerHTML;
-                    
+
                     sBtn.innerHTML = `<i class="fas fa-check" style="margin-right: 8px; color:var(--rose);"></i> 초대장 링크가 복사되었습니다.`;
                     sBtn.style.borderColor = 'var(--purple)';
-                    
+
                     setTimeout(() => {
                         sBtn.innerHTML = originalHTML;
                         sBtn.style.borderColor = '';
@@ -1065,4 +1598,5 @@
         }
     </script>
 </body>
+
 </html>
