@@ -589,7 +589,7 @@
         .ticket-reset {
             margin-top: 20px;
             font-size: 12px;
-            color: var(--text-soft);
+            color: #888888;
             cursor: pointer;
             letter-spacing: 0.5px;
             text-decoration: underline;
@@ -871,6 +871,57 @@
             object-fit: contain;
         }
 
+        /* 🗺️ 길찾기 내비게이션 버튼 럭셔리 스타일링 규격 */
+        .route-btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .route-btn {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 12px 0;
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--purple);
+            background: #FFFFFF;
+            border: 1px solid var(--line);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .route-btn i {
+            font-size: 16px;
+        }
+
+        .route-btn:hover {
+            background: var(--beige);
+            border-color: var(--rose);
+            box-shadow: 0 4px 15px rgba(229, 169, 158, 0.15);
+            transform: translateY(-1px);
+        }
+
+        .route-btn.naver:hover {
+            color: #03C75A;
+        }
+
+        .route-btn.kakao:hover {
+            color: #FEE500;
+            background: #3C3E4D;
+            border-color: #3C3E4D;
+        }
+
+        .route-btn.google:hover {
+            color: #4285F4;
+        }
+
         .hero-title,
         .invite-heading,
         .invite-body,
@@ -997,9 +1048,6 @@
         }
     </style>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-
 </head>
 
 <body>
@@ -1058,7 +1106,7 @@
 
         <section class="sec-invite">
             <span class="sec-num appear">02. INVITATION</span>
-            <span class="capsule appear d1">✉️ &nbsp; WELCOME</span>
+            <span class="capsule appear d1">✉️   WELCOME</span>
             <h2 class="invite-heading appear d2">
                 <span class="rose-em" style="font-family:'Cormorant Garamond',serif;">클리닉스 라뉴필</span><br>
                 신제품 런칭 쇼케이스에<br>당신을 초대합니다.
@@ -1074,9 +1122,9 @@
         </section>
 
         <section class="sec-ticket">
-            <span class="sec-num appear">03. COUNTDOWN &amp; TICKET</span>
+            <span class="sec-num appear">03. COUNTDOWN & TICKET</span>
             <div style="text-align:center;">
-                <span class="capsule appear d1">⏳ &nbsp; D-DAY</span>
+                <span class="capsule appear d1">⏳   D-DAY</span>
             </div>
 
             <div class="timer-frame appear d2">
@@ -1154,7 +1202,7 @@
         <section class="sec-benefit">
             <span class="sec-num appear">03-2. SPECIAL BENEFIT</span>
             <div style="text-align:center; margin-bottom:24px;">
-                <span class="capsule appear d1">🎁 &nbsp; VIP GIFT</span>
+                <span class="capsule appear d1">🎁   VIP GIFT</span>
             </div>
             <div class="benefit-card appear d2">
                 <span class="benefit-tag">EXCLUSIVE BENEFITS</span>
@@ -1187,7 +1235,7 @@
                         style="border: 1px dashed rgba(229,169,158,0.5); padding: 24px 16px; background: linear-gradient(135deg, #FFF 0%, var(--beige) 100%);">
                         <p
                             style="font-family: 'Cormorant Garamond', serif; font-size: 10px; letter-spacing: 4px; color: var(--rose); margin-bottom: 4px; text-transform: uppercase; font-weight: 600;">
-                            V I p &nbsp; E x c l u s i v e &nbsp; G i f t</p>
+                            V I p   E x c l u s i v e   G i f t</p>
                         <h4
                             style="font-size: 18px; color: var(--purple); font-weight: 600; margin-bottom: 4px; letter-spacing: 0.5px;">
                             스페셜 키트 교환권</h4>
@@ -1217,7 +1265,7 @@
         <section class="sec-info">
             <span class="sec-num appear">04. INFORMATION</span>
             <div style="text-align:center; margin-bottom:48px;">
-                <span class="capsule appear d1">🏛️ &nbsp; EVENT INFO</span>
+                <span class="capsule appear d1">🏛️   EVENT INFO</span>
             </div>
 
             <div class="info-grid">
@@ -1233,9 +1281,9 @@
                     <span class="ig-key appear d2"><i class="fas fa-star"
                             style="font-size:10px;margin-right:5px;"></i>Program</span>
                     <div class="ig-val appear d2">
-                        17:00 &mdash; 신제품 프리쇼<br>
-                        18:00 &mdash; 메이크업 메가 쇼<br>
-                        19:00 &mdash; 케이터링 &amp; 네트워킹
+                        17:00 — 신제품 프리쇼<br>
+                        18:00 — 메이크업 메가 쇼<br>
+                        19:00 — 케이터링 & 네트워킹
                     </div>
                 </div>
                 <div class="ig-row">
@@ -1265,7 +1313,7 @@
 
             <div class="rsvp-wrap appear d4">
                 <a href="#" class="rsvp-btn" onclick="alert('예약 페이지로 이동합니다.'); return false;">
-                    🥂 &nbsp; 쇼케이스 참석 예약하기
+                    🥂   쇼케이스 참석 예약하기
                 </a>
             </div>
 
@@ -1278,18 +1326,33 @@
 
             <div class="share-wrap appear d4">
                 <button class="share-btn" onclick="shareInvitation()">
-                    <i class="fas fa-share-alt" style="margin-right: 8px; font-size: 12px;"></i> 초대장 공유하기 &amp; 링크 복사
+                    <i class="fas fa-share-alt" style="margin-right: 8px; font-size: 12px;"></i> 초대장 공유하기 & 링크 복사
                 </button>
             </div>
 
             <div class="map-box appear d4">
                 <p class="map-lbl">오시는 길</p>
                 <img src="./Picture/약도.png" alt="제니트리 쇼룸 약도" class="map-img" onerror="this.style.display='none';">
+
+                <div class="route-btn-group">
+                    <a href="https://map.naver.com/v5/search/%EC%1%9C%EC%9A%B8%20%EA%B8%88%EC%B2%9C%EA%B5%AC%20%EA%B0%80%EC%82%B0%EB%94%94%EC%A7%80%ED%84%B02%EB%A1%90%2067"
+                        target="_blank" rel="noopener noreferrer" class="route-btn naver">
+                        <i class="fas fa-map-marked-alt"></i> 네이버 지도
+                    </a>
+                    <a href="https://map.kakao.com/link/to/제니트리쇼룸,37.4764,126.8856" target="_blank"
+                        rel="noopener noreferrer" class="route-btn kakao">
+                        <i class="fas fa-map"></i> 카카오맵
+                    </a>
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=%EC%1%9C%EC%9A%B8+%EA%B8%88%EC%B2%9C%EA%B5%AC+%EA%B0%80%EC%82%B0%EB%94%94%EC%A7%80%ED%84%B02%EB%A1%90+67" target="_blank"
+                        rel="noopener noreferrer" class="route-btn google">
+                        <i class="fas fa-navigation"></i> 구글 지도
+                    </a>
+                </div>
             </div>
         </section>
 
         <footer class="card-footer">
-            <p class="footer-txt">CLINIX LAHNUPEEL &nbsp;·&nbsp; 2026 &nbsp;·&nbsp; ✨</p>
+            <p class="footer-txt">CLINIX LAHNUPEEL  ·  2026  ·  ✨</p>
         </footer>
 
     </main>
@@ -1476,6 +1539,7 @@
             const diff = TARGET - Date.now();
             if (diff <= 0) { ['cd', 'ch', 'cm', 'cs'].forEach(id => $id(id).textContent = '00'); return; }
             $id('cd').textContent = pad(Math.floor(diff / 86400000));
+            // 오타 청소 및 수식 정렬 완공 부위
             $id('ch').textContent = pad(Math.floor((diff % 86400000) / 3600000));
             $id('cm').textContent = pad(Math.floor((diff % 3600000) / 60000));
             $id('cs').textContent = pad(Math.floor((diff % 60000) / 1000));
