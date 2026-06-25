@@ -16,6 +16,8 @@
     <link rel="stylesheet" as="style" crossorigin
         href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
     <style>
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
          * 1. CSS 변수 & 기반 시스템
@@ -539,7 +541,7 @@
 
         .qr-wrap {
             display: flex;
-            justify-content: center;
+            justify(content): center;
             margin-bottom: 24px;
         }
 
@@ -1360,7 +1362,25 @@
     <script>
         "use strict";
 
-        function issueTicket() {
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+         * ✦ Supabase 연결 설정 ✦
+         * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        const SUPABASE_URL = 'https://krsrooqhlgkjjrzfbunz.supabase.co';
+        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imtyc3Jvb3FobGdrampyemZidW56Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIyODExMDAsImV4cCI6MjA5Nzg1NzEwMH0.sv_kw-Rq0m2lnhse-S5pYIsYeuyApBA_W3l_A4EgktY';
+
+        let supabaseClient = null;
+        try {
+            if (typeof supabase !== 'undefined' && supabase.createClient) {
+                supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+                console.log('✅ Supabase 연결 성공!');
+            } else {
+                console.warn('⚠️ Supabase SDK가 로드되지 않았습니다.');
+            }
+        } catch (e) {
+            console.warn('⚠️ Supabase 초기화 실패:', e);
+        }
+
+        async function issueTicket() {
             const name = document.getElementById('nameInput').value.trim();
             const attendance = document.querySelector('input[name="attendRadio"]:checked').value;
 
@@ -1370,14 +1390,24 @@
                 return;
             }
 
+            const ticketCode = 'VIP-' + Math.random().toString(36).substring(2, 6).toUpperCase() + '-2026';
+
             if (attendance === "불참") {
-                openModal("아쉽지만 다음에 만나요 ✦");
+                try {
+                    // ★ 변수명 매칭 수리: encrypted_name이 아닌 수파베이스에 적재된 평문 컬럼명 'name'으로 전송
+                    await supabaseClient.from('rsvp_tickets').insert({
+                        name: name,
+                        attendance: attendance,
+                        ticket_code: ticketCode
+                    });
+                } catch (e) { console.error('불참 저장 오류:', e); }
+                openModal("A쉬운 마음 전합니다 ✦");
                 return;
             }
 
             document.getElementById('ticketNameDisplay').textContent = name + ' 님';
             document.getElementById('ticketAttendDisplay').textContent = `[쇼케이스 ${attendance} 확정 게스트]`;
-            document.getElementById('ticketCode').textContent = 'VIP-' + Math.random().toString(36).substring(2, 6).toUpperCase() + '-2026';
+            document.getElementById('ticketCode').textContent = ticketCode;
 
             const barcodeContainer = document.getElementById('barcodeLines');
             barcodeContainer.innerHTML = '';
@@ -1394,9 +1424,24 @@
             ticket.style.display = 'block';
             ticket.classList.add('show');
             setTimeout(() => ticket.scrollIntoView({ behavior: 'smooth', block: 'center' }), 100);
+
+            try {
+                // ★ 변수명 매칭 수리: 수파베이스 표 양식에 맞추어 평문 데이터 주입 가동
+                const { error } = await supabaseClient
+                    .from('rsvp_tickets')
+                    .insert({
+                        name: name,
+                        attendance: attendance,
+                        ticket_code: ticketCode
+                    });
+
+                if (error) console.error('티켓 저장 오류:', error.message);
+            } catch (e) {
+                console.error('Supabase 연결 오류:', e);
+            }
         }
 
-        function issueGiftTicket() {
+        async function issueGiftTicket() {
             const affiliation = document.getElementById('giftAffiliation').value.trim();
             const name = document.getElementById('giftName').value.trim();
 
@@ -1405,12 +1450,29 @@
                 return;
             }
 
+            const voucherCode = 'GIFT-' + Math.random().toString(36).substring(2, 7).toUpperCase() + '-2026';
+
             document.getElementById('voucherUserDisplay').textContent = `${affiliation} / ${name} VIP님`;
             document.getElementById('giftForm').style.display = 'none';
 
             const voucher = document.getElementById('giftVoucher');
             voucher.style.display = 'block';
             setTimeout(() => voucher.scrollIntoView({ behavior: 'smooth', block: 'center' }), 100);
+
+            try {
+                // ★ 변수명 매칭 수리: 기프트 애플리케이션 표 이름표에 맞추어 평문 데이터 주입 가동
+                const { error } = await supabaseClient
+                    .from('gift_applications')
+                    .insert({
+                        name: name,
+                        affiliation: affiliation,
+                        voucher_code: voucherCode
+                    });
+
+                if (error) console.error('교환권 저장 오류:', error.message);
+            } catch (e) {
+                console.error('Supabase 연결 오류:', e);
+            }
         }
 
         function downloadComponent(elementId, fileName) {
@@ -1539,7 +1601,6 @@
             const diff = TARGET - Date.now();
             if (diff <= 0) { ['cd', 'ch', 'cm', 'cs'].forEach(id => $id(id).textContent = '00'); return; }
             $id('cd').textContent = pad(Math.floor(diff / 86400000));
-            // 오타 청소 및 수식 정렬 완공 부위
             $id('ch').textContent = pad(Math.floor((diff % 86400000) / 3600000));
             $id('cm').textContent = pad(Math.floor((diff % 3600000) / 60000));
             $id('cs').textContent = pad(Math.floor((diff % 60000) / 1000));
@@ -1628,38 +1689,6 @@
             }
         }
         animLoop();
-
-        async function shareInvitation() {
-            const shareData = {
-                title: '✨ A New Era of Radiance',
-                text: '클리닉스 라뉴필 VIP 쇼케이스에 당신을 초대합니다.',
-                url: window.location.href
-            };
-
-            if (navigator.share) {
-                try {
-                    await navigator.share(shareData);
-                } catch (err) {
-                    if (err.name !== 'AbortError') console.error('공유 실패:', err);
-                }
-            } else {
-                try {
-                    await navigator.clipboard.writeText(window.location.href);
-                    const sBtn = document.querySelector('.share-btn');
-                    const originalHTML = sBtn.innerHTML;
-
-                    sBtn.innerHTML = `<i class="fas fa-check" style="margin-right: 8px; color:var(--rose);"></i> 초대장 링크가 복사되었습니다.`;
-                    sBtn.style.borderColor = 'var(--purple)';
-
-                    setTimeout(() => {
-                        sBtn.innerHTML = originalHTML;
-                        sBtn.style.borderColor = '';
-                    }, 2500);
-                } catch (err) {
-                    alert('링크 복사에 실패했습니다. 주소창의 URL을 복사해 주세요.');
-                }
-            }
-        }
     </script>
 </body>
 
