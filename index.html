@@ -76,7 +76,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 44px;
+            gap: 30px;
             background: rgba(255, 255, 255, 0.88);
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
@@ -541,7 +541,7 @@
 
         .qr-wrap {
             display: flex;
-            justify(content): center;
+            justify-content: center;
             margin-bottom: 24px;
         }
 
@@ -910,19 +910,9 @@
             transform: translateY(-1px);
         }
 
-        .route-btn.naver:hover {
-            color: #03C75A;
-        }
-
-        .route-btn.kakao:hover {
-            color: #FEE500;
-            background: #3C3E4D;
-            border-color: #3C3E4D;
-        }
-
-        .route-btn.google:hover {
-            color: #4285F4;
-        }
+        .route-btn.naver:hover { color: #03C75A; }
+        .route-btn.kakao:hover { color: #FEE500; background: #3C3E4D; border-color: #3C3E4D; }
+        .route-btn.google:hover { color: #4285F4; }
 
         .hero-title,
         .invite-heading,
@@ -993,7 +983,7 @@
             cursor: pointer;
         }
 
-        /* 🥂 리뉴얼: 럭셔리 티켓 쉐이프 바우처 디자인 시스템 */
+        /* 🥂 럭셔리 티켓 쉐이프 바우처 디자인 시스템 */
         .premium-voucher {
             display: none;
             background: #FFF;
@@ -1007,7 +997,6 @@
             overflow: hidden;
         }
 
-        /* 양옆 티켓 펀칭 구멍 구현 */
         .premium-voucher::before,
         .premium-voucher::after {
             content: '';
@@ -1021,32 +1010,41 @@
             z-index: 10;
         }
 
-        .premium-voucher::before {
-            left: -9px;
-        }
+        .premium-voucher::before { left: -9px; }
+        .premium-voucher::after { right: -9px; }
 
-        .premium-voucher::after {
-            right: -9px;
+        /* 🔒 관리자 전용 스타일 시스템 (추가 구역) */
+        .admin-panel-overlay {
+            display: none; position: fixed; inset: 0; background: var(--white); z-index: 150000; overflow-y: auto; padding: 24px;
+        }
+        .admin-header {
+            display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--purple); padding-bottom: 16px; margin-bottom: 24px;
+        }
+        .admin-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; color: var(--purple); font-weight: 600; }
+        .admin-tabs { display: flex; gap: 8px; margin-bottom: 20px; }
+        .admin-tab-btn { flex: 1; padding: 12px; background: var(--beige); border: 1px solid var(--line); color: var(--text-soft); font-size: 13px; cursor: pointer; transition: all 0.3s; }
+        .admin-tab-btn.active { background: var(--purple); color: var(--white); border-color: var(--purple); font-weight: 600; }
+        .admin-content-section { display: none; }
+        .admin-content-section.active { display: block; }
+        .admin-data-card {
+            position: relative; background: var(--beige); border: 1px solid var(--line); padding: 16px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+        .admin-card-title { font-size: 15px; font-weight: 600; color: var(--purple); margin-bottom: 4px; }
+        .admin-card-detail { font-size: 13px; color: var(--text); line-height: 1.6; }
+        .admin-card-date { font-size: 11px; color: var(--text-soft); margin-top: 8px; }
+        .admin-row-delete-btn {
+            position: absolute; right: 16px; top: 16px; background: #FFEAEC; border: 1px solid #FFCCD2; color: #FF4D5A; padding: 6px 12px; font-size: 12px; cursor: pointer; transition: all 0.2s;
+        }
+        .admin-row-delete-btn:hover { background: #FF4D5A; color: var(--white); }
+        .admin-input-styled {
+            width: 100%; padding: 14px; border: 1px solid var(--rose); background: var(--white); font-size: 14px; outline: none; margin-bottom: 16px; text-align: center; letter-spacing: 4px;
         }
 
         @media (max-width: 480px) {
-            #card {
-                margin: 12px 8px;
-            }
-
-            .hero-title {
-                font-size: 36px;
-            }
-
-            .t-num {
-                font-size: 40px;
-            }
-
-            .sec-invite,
-            .sec-info {
-                padding-left: 28px;
-                padding-right: 28px;
-            }
+            #card { margin: 12px 8px; }
+            .hero-title { font-size: 36px; }
+            .t-num { font-size: 40px; }
+            .sec-invite, .sec-info { padding-left: 28px; padding-right: 28px; }
         }
     </style>
 
@@ -1055,6 +1053,37 @@
 <body>
 
     <canvas id="sparks"></canvas>
+
+    <div class="custom-modal" id="adminAuthModal">
+        <div class="modal-content">
+            <p class="modal-msg">✦ 관리자 일회성 비밀번호 인증 ✦</p>
+            <input type="password" id="adminPwdInput" class="admin-input-styled" placeholder="••••" maxlength="15">
+            <div style="display:flex; gap:8px;">
+                <button class="modal-btn" style="flex:1; background:var(--text-soft); color:white;" onclick="closeAdminAuth()">취소</button>
+                <button class="modal-btn" style="flex:1;" onclick="checkAdminPassword()">인증하기</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="admin-panel-overlay" id="adminPanel">
+        <div class="admin-header">
+            <h2 class="admin-title">LAHNUPEEL 대시보드 🥂</h2>
+            <button class="modal-btn" style="padding: 8px 18px; font-size: 12px;" onclick="closeAdminPanel()">닫기</button>
+        </div>
+        
+        <div class="admin-tabs">
+            <button class="admin-tab-btn active" onclick="switchAdminTab('ticketsSection', this)">RSVP 티켓 (<span id="ticketCount">0</span>)</button>
+            <button class="admin-tab-btn" onclick="switchAdminTab('giftsSection', this)">스페셜 키트 (<span id="giftCount">0</span>)</button>
+        </div>
+
+        <div class="admin-content-section active" id="ticketsSection">
+            <div id="ticketContainer"></div>
+        </div>
+
+        <div class="admin-content-section" id="giftsSection">
+            <div id="giftContainer"></div>
+        </div>
+    </div>
 
     <div class="custom-modal" id="noticeModal">
         <div class="modal-content">
@@ -1072,6 +1101,9 @@
         </button>
         <button class="nav-icon" title="PC 뷰 (1200px)" onclick="setView('pc', this)">
             <i class="fas fa-desktop"></i>
+        </button>
+        <button class="nav-icon" title="시스템 제어 관리자" onclick="openAdminAuth()">
+            <i class="fas fa-lock"></i>
         </button>
     </nav>
 
@@ -1367,6 +1399,9 @@
          * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         const SUPABASE_URL = 'https://krsrooqhlgkjjrzfbunz.supabase.co';
         const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imtyc3Jvb3FobGdrampyemZidW56Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIyODExMDAsImV4cCI6MjA5Nzg1NzEwMH0.sv_kw-Rq0m2lnhse-S5pYIsYeuyApBA_W3l_A4EgktY';
+        
+        // 🔒 관리자 일회성 비밀번호 설정 (원하는 비밀번호로 변경 가능)
+        const ADMIN_PASSWORD = "1234";
 
         let supabaseClient = null;
         try {
@@ -1394,7 +1429,6 @@
 
             if (attendance === "불참") {
                 try {
-                    // ★ 변수명 매칭 수리: encrypted_name이 아닌 수파베이스에 적재된 평문 컬럼명 'name'으로 전송
                     await supabaseClient.from('rsvp_tickets').insert({
                         name: name,
                         attendance: attendance,
@@ -1426,7 +1460,6 @@
             setTimeout(() => ticket.scrollIntoView({ behavior: 'smooth', block: 'center' }), 100);
 
             try {
-                // ★ 변수명 매칭 수리: 수파베이스 표 양식에 맞추어 평문 데이터 주입 가동
                 const { error } = await supabaseClient
                     .from('rsvp_tickets')
                     .insert({
@@ -1460,7 +1493,6 @@
             setTimeout(() => voucher.scrollIntoView({ behavior: 'smooth', block: 'center' }), 100);
 
             try {
-                // ★ 변수명 매칭 수리: 기프트 애플리케이션 표 이름표에 맞추어 평문 데이터 주입 가동
                 const { error } = await supabaseClient
                     .from('gift_applications')
                     .insert({
@@ -1474,6 +1506,106 @@
                 console.error('Supabase 연결 오류:', e);
             }
         }
+
+        /* 🔒 관리자 제어 비즈니스 엔진 로직 (추가 구역) */
+        function openAdminAuth() {
+            document.getElementById('adminPwdInput').value = '';
+            document.getElementById('adminAuthModal').classList.add('show');
+            document.getElementById('adminPwdInput').focus();
+        }
+        function closeAdminAuth() {
+            document.getElementById('adminAuthModal').classList.remove('show');
+        }
+        function checkAdminPassword() {
+            const input = document.getElementById('adminPwdInput').value;
+            if (input === ADMIN_PASSWORD) {
+                closeAdminAuth();
+                openAdminPanel();
+            } else {
+                alert("🔒 인증 권한 비밀번호가 올바르지 않습니다.");
+                document.getElementById('adminPwdInput').value = '';
+            }
+        }
+        async function openAdminPanel() {
+            document.getElementById('adminPanel').style.display = 'block';
+            await loadAdminData();
+        }
+        function closeAdminPanel() {
+            document.getElementById('adminPanel').style.display = 'none';
+        }
+        function switchAdminTab(sectionId, btn) {
+            document.querySelectorAll('.admin-content-section').forEach(sec => sec.classList.remove('active'));
+            document.querySelectorAll('.admin-tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+            btn.classList.add('active');
+        }
+        async function loadAdminData() {
+            if (!supabaseClient) return;
+            try {
+                // RSVP 데이터 원격 로드
+                const { data: tickets, error: tErr } = await supabaseClient.from('rsvp_tickets').select('*').order('created_at', { ascending: false });
+                if (tErr) throw tErr;
+                
+                document.getElementById('ticketCount').textContent = tickets.length;
+                const tContainer = document.getElementById('ticketContainer');
+                tContainer.innerHTML = tickets.length === 0 ? '<p style="text-align:center; color:#888; padding:30px;">등록된 참석 내역이 없습니다.</p>' : '';
+                
+                tickets.forEach(row => {
+                    const dateStr = new Date(row.created_at).toLocaleString('ko-KR');
+                    const card = document.createElement('div');
+                    card.className = 'admin-data-card';
+                    card.innerHTML = `
+                        <div class="admin-card-title">${row.name} VIP님 (${row.attendance})</div>
+                        <div class="admin-card-detail">코드: ${row.ticket_code}</div>
+                        <div class="admin-card-date">등록시간: ${dateStr}</div>
+                        <button class="admin-row-delete-btn" onclick="deleteAdminRecord('rsvp_tickets', ${row.id})">삭제</button>
+                    `;
+                    tContainer.appendChild(card);
+                });
+
+                // 스페셜 키트 바우처 데이터 원격 로드
+                const { data: gifts, error: gErr } = await supabaseClient.from('gift_applications').select('*').order('created_at', { ascending: false });
+                if (gErr) throw gErr;
+
+                document.getElementById('giftCount').textContent = gifts.length;
+                const gContainer = document.getElementById('giftContainer');
+                gContainer.innerHTML = gifts.length === 0 ? '<p style="text-align:center; color:#888; padding:30px;">등록된 키트 신청 내역이 없습니다.</p>' : '';
+
+                gifts.forEach(row => {
+                    const dateStr = new Date(row.created_at).toLocaleString('ko-KR');
+                    const card = document.createElement('div');
+                    card.className = 'admin-data-card';
+                    card.innerHTML = `
+                        <div class="admin-card-title">${row.affiliation} / ${row.name} 님</div>
+                        <div class="admin-card-detail">바우처 코드: ${row.voucher_code}</div>
+                        <div class="admin-card-date">등록시간: ${dateStr}</div>
+                        <button class="admin-row-delete-btn" onclick="deleteAdminRecord('gift_applications', ${row.id})">삭제</button>
+                    `;
+                    gContainer.appendChild(card);
+                });
+
+            } catch (err) {
+                console.error("대시보드 로드 에러:", err);
+                alert("데이터를 가져오는 도중 오류가 발생했습니다.");
+            }
+        }
+        async function deleteAdminRecord(tableName, id) {
+            if (!confirm("🚨 해당 명단 데이터를 정말 삭제하시겠습니까?\n삭제된 데이터는 복구할 수 없습니다.")) return;
+            try {
+                const { error } = await supabaseClient.from(tableName).delete().eq('id', id);
+                if (error) throw error;
+                alert("🗑️ 선택하신 명단이 안전하게 영구 삭제되었습니다.");
+                await loadAdminData(); // 화면 갱신
+            } catch (err) {
+                console.error("데이터 삭제 에러:", err);
+                alert("삭제 처리 중 통신 오류가 발생했습니다.");
+            }
+        }
+
+        // 비밀번호 입력창에서 엔터치면 로그인 작동
+        document.getElementById('adminPwdInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') checkAdminPassword();
+        });
 
         function downloadComponent(elementId, fileName) {
             const target = document.getElementById(elementId);
